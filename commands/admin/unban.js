@@ -20,7 +20,7 @@ module.exports.run = async (bot, message, args) => {
 
         const bannedUser = banList.find(user => user.id === bannedMember);
 
-        if (!bannedUser) await message.channel.send(`${bannedUser.tag} is not banned.`);
+        if (!bannedUser) await message.channel.send(`${bannedUser.user.tag} is not banned.`);
     } catch (err) {
         console.error(err);
     }
