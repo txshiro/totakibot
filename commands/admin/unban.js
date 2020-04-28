@@ -43,9 +43,9 @@ module.exports.run = async (bot, message, args) => {
     }
 }
 module.exports.help = {
-    name: 'softban',
+    name: 'unban',
     aliases: [],
-    description: "Softban user!",
+    description: "Unban user!",
     noaliases: "None",
     accessability: "Admin/Moderators"
 }
