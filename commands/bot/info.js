@@ -15,15 +15,6 @@ files.forEach(file => {
 
 module.exports.run = async (bot, message, args) => {
 
-    fs.readdir(dir, (err, files) => {
-        let cmd = file.replace('.js', '.js');
-        let props = require(`./commands/${cmd}`);
-
-        console.log(props.length)
-
-    });
-
-
     let embed = new Discord.MessageEmbed()
         .setAuthor(message.author.username, message.author.avatarURL())
         .addField("👨 Created by", "txshiro#0612")
