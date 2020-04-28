@@ -18,7 +18,7 @@ module.exports.run = async (bot, message, args) => {
 
     const bannedUser = banList.find(user => user.id === bannedMember.id);
 
-    if (!bannedUser) return message.channel.send(`${bannedUser.tag} is not banned.`);
+    if (!bannedUser) return message.channel.send(`${bannedUser} is not banned.`);
 
     try {
         message.guild.members.unban(bannedMember, reason)
