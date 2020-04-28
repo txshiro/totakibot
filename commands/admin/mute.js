@@ -3,7 +3,24 @@ const color = require('../../json/colors.json')
 
 module.exports.run = async (bot, message, args) => {
 
+    if (!message.member.hasPermission(["MANAGE_ROLES", "MUTE_MEMBERS"])) return message.reply("You don't have enough permissions!");
 
+    let mutee = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
+    if (!mutee) return message.reply("You need to specify a user!")
+    if (mutee.id === message.author.id) return message.reply("You can't mute yourself.")
+    if (mutee.id === "694857173595062354") return message.reply("I can't be muted by mere human.");
+
+    let reason = args.slice(1).join(" ");
+    if (!reason) reason = "No reason given."
+
+    let muterole = message.guild.roles.cache.find(r => r.name === "Muted");
+    if (!muterole) return message.channel.send("You need to create `Muted` role first.")
+
+    mutee.roles.add(muterole.id).then(() => {
+        message.delete()
+        mutee.send(`You've been muted in ${message.guild.name} for: ${reason}`)
+        message.channel.send(`${mutee.user.username} was muted.`)
+    })
 }
 module.exports.help = {
     name: 'mute',
