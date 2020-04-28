@@ -5,10 +5,9 @@ const read = require('fs-readdir-recursive');
 
 
 const files = read('../../commands');
-files.forEach(err, file => {
+files.forEach(file => {
     let cmd = file.replace('.js', '.js');
     let props = require(`./commands/${cmd}`);
-    if (err) return console.log(err);
 
     console.log(props.length)
 
