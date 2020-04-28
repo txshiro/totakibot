@@ -39,7 +39,7 @@ bot.on('ready', () => {
 })
 bot.on('guildMemberAdd', member => {
     const channel = member.guild.channels.cache.find(channel => channel.name === "welcome");
-    if (!channel) return console.log("No welcome channel")
+    if (!channel) return;
     channel.send(`👋 Welcome ${member}, to Totaki Support Server! 👋`);
 
 })
