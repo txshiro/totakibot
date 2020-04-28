@@ -32,7 +32,6 @@ files.forEach(file => {
         table.addRow(file, '✅');
     } else {
         table.addRow(file, '❌ -> missing something ?');
-        continue;
     }
 
     props.help.aliases.forEach(alias => {
