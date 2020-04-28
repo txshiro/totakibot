@@ -1,7 +1,5 @@
 const Discord = require('discord.js');
 const mongoose = require('mongoose');
-const config = require("../../json/config.json");
-const fs = require('fs');
 
 
 //connect to databse
@@ -15,14 +13,6 @@ const Data = require("../../models/data.js")
 
 module.exports.run = async (bot, message, args) => {
 
-    let prefixes = JSON.parse(fs.readFileSync("././json/prefixes.json", "utf8"));
-    if (!prefixes[message.guild.id]) {
-        prefixes[message.guild.id] = {
-            prefix: config.prefix
-        }
-    }
-
-    let prefix = prefixes[message.guild.id].prefix;
 
     let user = message.mentions.users.first() || bot.users.cache.get(args[0])
     if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply(`You don't have enough permissions`);
