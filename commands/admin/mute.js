@@ -21,7 +21,7 @@ module.exports.run = async (bot, message, args) => {
             .setTitle("You've been muted")
             .setAuthor(bot.user.username, bot.user.avatarURL())
             .setThumbnail(mutee.user.avatarURL())
-            .setDescription(`**You've been muted in:** ${message.guild.name}\n**Reason:** ${reason}\n**By:** ${message.author.username}\n**Date:** ${message.createdAt.toLocaleString()`)
+            .setDescription(`**You've been muted in:** ${message.guild.name}\n**Reason:** ${reason}\n**By:** ${message.author.username}\n**Date:** ${message.createdAt.toLocaleString()}`)
             .setTimestamp()
             .setColor(color.red);
         mutee.send(embed)
@@ -29,10 +29,10 @@ module.exports.run = async (bot, message, args) => {
             let mutechannel = message.guild.channels.cache.find(ch => ch.name === "mutes")
 
             let embed2 = new Discord.MessageEmbed()
-                .setTitle(`${ mutee.user.username } was muted!`)
+                .setTitle(`${mutee.user.username} was muted!`)
                 .setThumbnail(mutee.user.avatarURL())
                 .setAuthor(bot.user.username, bot.user.avatarURL())
-                .setDescription(`** Muted by:** ${ message.author.tag }\n ** Reason **: ${ reason }\n ** Date:** ${ message.createdAt.toLocaleString() }`)
+                .setDescription(`** Muted by:** ${message.author.tag}\n ** Reason **: ${reason}\n ** Date:** ${message.createdAt.toLocaleString()}`)
                 .setTimestamp()
                 .setColor(color.seagreen);
 
