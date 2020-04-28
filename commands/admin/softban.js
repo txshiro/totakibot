@@ -22,11 +22,11 @@ module.exports.run = async (bot, message, args) => {
     let reason = args.slice(2).join(" ");
     if (!reason) reason = "No reason given.";
 
-    message.guild.ban(banMember, { days: tempb, reason: reason }).catch(err => console.log(err))
+    message.guild.members.ban(banMember, { days: tempb, reason: reason }).catch(err => console.log(err))
 
 
     let embed = new Discord.MessageEmbed()
-        .setTitle("You've been Softbanned")
+        .setTitle("You've been banned")
         .setAuthor(bot.user.username, bot.user.avatarURL())
         .setDescription(`**You've been banned in:** ${message.guild.name}\n**Reason**: ${reason}\n**For:** ${tempb} days\n**By:** ${message.author.tag}\n**Date:** ${message.createdAt.toLocaleString()}`)
         .setTimestamp()
@@ -37,7 +37,7 @@ module.exports.run = async (bot, message, args) => {
         let mutechannel = message.guild.channels.cache.find(ch => ch.name === "mutes")
 
         let embed2 = new Discord.MessageEmbed()
-            .setTitle(`${banMember.user.tag} was Softbaned!`)
+            .setTitle(`${banMember.user.tag} was baned!`)
             .setAuthor(bot.user.username, bot.user.avatarURL())
             .setDescription(`** Banned by:** ${message.author.tag}\n ** Reason **: ${reason}\n**For:** ${tempb}\n ** By:** ${message.author.username}\n ** Date:** ${message.createdAt.toLocaleString()}`)
             .setTimestamp()
@@ -48,9 +48,9 @@ module.exports.run = async (bot, message, args) => {
     }
 }
 module.exports.help = {
-    name: 'softban',
+    name: 'ban',
     aliases: [],
-    description: "Softban user!",
+    description: "Ban user!",
     noaliases: "None",
     accessability: "Admin/Moderators"
 }

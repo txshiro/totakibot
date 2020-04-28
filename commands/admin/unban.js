@@ -15,7 +15,7 @@ module.exports.run = async (bot, message, args) => {
     if (!reason) reason = "No reason given."
 
     try {
-        message.guild.unban(bannedMember, reason)
+        message.guild.members.unban(bannedMember, reason)
     } catch (e) {
         console.log(e.message)
     }
