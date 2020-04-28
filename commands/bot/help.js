@@ -25,7 +25,7 @@ module.exports.run = async (bot, message, args) => {
         embed.setDescription("**tk!help <command name>** for more info on certain command!")
         embed.addField("1. Fun", "`8ball` `iq` `pp` `morecko` `hit` `hug` `pat` `wave` `userinfo`")
         embed.addField("2. Gamble", "`balance` `coinflip` `daily` `gamble` `leaderboards` `pay` `slots`")
-        embed.addField("3. Admin", "`adminpayall` `adminpay` `clear` `mute`")
+        embed.addField("3. Admin", "`adminpayall` `adminpay` `clear` `mute` `unmute` `kick`")
         embed.addField("4. Bot", "`ping` `uptime` `help` `info`")
         embed.setColor(colors.blanchedalmond)
         embed.setFooter("Thanks for using this bot!", bot.user.avatarURL())

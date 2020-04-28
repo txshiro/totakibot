@@ -17,7 +17,7 @@ module.exports.run = async (bot, message, args) => {
     let muterole = message.guild.roles.cache.find(r => r.name === "Muted");
     if (!muterole) return message.channel.send("You need to create `Muted` role first.")
 
-    if (!mutee.roles.cache.find(r => r.name === "Muted")) return message.channel.send("That person is already muted")
+    if (mutee.roles.cache.find(r => r.name === "Muted")) return message.channel.send("That person is already muted")
 
     mutee.roles.add(muterole.id).then(() => {
         let embed = new Discord.MessageEmbed()
