@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const mongoose = require('mongoose');
-const botconfig = require("../../json/botconfig.json")
+const config = require("../../json/config.json");
+const fs = require('fs');
 
 
 //connect to databse
@@ -13,6 +14,16 @@ mongoose.connect(process.env.MONGODB_URI, {
 const Data = require("../../models/data.js")
 
 module.exports.run = async (bot, message, args) => {
+
+    let prefixes = JSON.parse(fs.readFileSync("././json/prefixes.json", "utf8"));
+    if (!prefixes[message.guild.id]) {
+        prefixes[message.guild.id] = {
+            prefix: config.prefix
+        }
+    }
+
+    let prefix = prefixes[message.guild.id].prefix;
+
     let user = message.mentions.users.first() || bot.users.cache.get(args[0])
     if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply(`You don't have enough permissions`);
     if (!user) return message.reply("I can't find that user");
@@ -89,7 +100,7 @@ module.exports.run = async (bot, message, args) => {
                 .setThumbnail(bot.users.cache.get(user.id).avatarURL())
                 .addField("For", bot.users.cache.get(user.id).username, true)
                 .addField(`New Balance`, `**${grabUserData.toLocaleString()}**`, true)
-                .setFooter("!help for commands", bot.user.avatarURL());
+                .setFooter(`${prefixes[message.guild.id].prefix}help for commands`);
             return message.channel.send(embed);
         }
     })
