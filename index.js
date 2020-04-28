@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const read = require('fs-readdir-recursive');
+
 
 const { prefix, token } = require("./json/config.json");
 const ms = require('ms');
@@ -8,11 +8,6 @@ const bot = new Discord.Client();
 const DBL = require('dblapi.js');
 const dbl = new DBL('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NDg1NzE3MzU5NTA2MjM1NCIsImJvdCI6dHJ1ZSwiaWF0IjoxNTg4MDc2NjI2fQ.bwx8evJflf5clAh4fKiyGZZIoc2PqxcxnInb6UXUhU8', { webhookPort: 5000, webhookAuth: 'password' });
 
-const ascii = require('ascii-table');
-
-const table = new ascii().setHeading("Commands", "Load status");
-
-const { readdirSync } = require('fs')
 
 bot.commands = new Discord.Collection();
 bot.aliases = new Discord.Collection();
@@ -24,26 +19,9 @@ dbl.webhook.on('vote', vote => {
     console.log(`User with ID ${vote.user} just voted!`);
 });
 
-readdirSync("./commands/").forEach(dir => {
-    const commands = readdirSync(`./commands/${dir}/`).filter(f => f.endsWith(".js"));
-
-    for (let file of commands) {
-        let pull = require(`./commands/${dir}/${file}`);
-
-        if (pull.help) {
-            bot.commands.set(pull.help.name, pull);
-            table.addRow(file, '✅');
-        } else {
-            table.addRow(file, '❌ -> missing something ?');
-            continue;
-        }
-
-        if (pull.help.aliases && Array.isArray(pull))
-            pull.help.aliases.forEach(alias => bot.aliases.set(alias, pull.help.name));
-    }
+["command"].forEach(handler => {
+    require(`./handler/${handler}`)(bot);
 });
-
-console.log(table.toString())
 
 bot.on('ready', () => {
 
