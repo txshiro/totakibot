@@ -14,11 +14,23 @@ module.exports.run = async (bot, message, args) => {
     let reason = args.slice(1).join(" ");
     if (!reason) reason = "No reason given."
 
+
+    try {
+        const banList = await message.guild.fetchBans();
+
+        const bannedUser = banList.find(user => user.id === bannedMember);
+
+        if (!bannedUser) await message.channel.send(`${bannedUser.tag} is not banned.`);
+    } catch (err) {
+        console.error(err);
+    }
+
     try {
         message.guild.members.unban(bannedMember, reason)
     } catch (e) {
         console.log(e.message)
     }
+
 
     let embed = new Discord.MessageEmbed()
         .setTitle("You've been unbanned")
