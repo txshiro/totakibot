@@ -6,7 +6,7 @@ module.exports.run = async (bot, message, args) => {
     if (!message.member.hasPermission(["BAN_MEMBERS"])) return message.reply("You don't have enough permissions!");
 
     if (isNaN(args[0])) return message.channel.send("You need to provide an ID.")
-    let bannedMember = await bot.fetchUser(args[0])
+    let bannedMember = await bot.users.fetchUser(args[0])
     if (!bannedMember) return message.channel.send("Please provide a user id to unban someone!")
     if (bannedMember.id === message.author.id) return message.reply("You can't use this command on yourself.")
     if (bannedMember.id === "694857173595062354") return message.reply("You can't use this command on bot.");

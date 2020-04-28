@@ -20,27 +20,27 @@ module.exports.run = async (bot, message, args) => {
         .setAuthor(bot.user.username, bot.user.avatarURL())
         .setDescription(`**You've been banned in:** ${message.guild.name}\n**Reason**: ${reason}\n**By:** ${message.author.tag}\n**Date:** ${message.createdAt.toLocaleString()}`)
         .setTimestamp()
-        .setThumbnail(unmutee.user.avatarURL())
+        .setThumbnail(banMember.user.avatarURL())
         .setColor(color.darkred);
     banMember.send(embed)
     if (message.guild.id === "703661705997189200") {
         let mutechannel = message.guild.channels.cache.find(ch => ch.name === "mutes")
 
         let embed2 = new Discord.MessageEmbed()
-            .setTitle(`${unmutee.user.tag} has been Perma-banned!`)
+            .setTitle(`${banMember.user.tag} has been Perma-banned!`)
             .setAuthor(bot.user.username, bot.user.avatarURL())
             .setDescription(`** Banned by:** ${message.author.tag}\n ** Reason **: ${reason}\n ** By:** ${message.author.username}\n ** Date:** ${message.createdAt.toLocaleString()}`)
             .setTimestamp()
-            .setThumbnail(unmutee.user.avatarURL())
+            .setThumbnail(banMember.user.avatarURL())
             .setColor(color.lightgreen);
 
         mutechannel.send(embed2)
     }
 }
 module.exports.help = {
-    name: 'ban',
+    name: 'permaban',
     aliases: [],
-    description: "Ban user!",
+    description: "Perma-ban user!",
     noaliases: "None",
     accessability: "Admin/Moderators"
 }
