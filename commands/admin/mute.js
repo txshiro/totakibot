@@ -10,18 +10,21 @@ module.exports.run = async (bot, message, args) => {
     if (mutee.id === message.author.id) return message.reply("You can't mute yourself.")
     if (mutee.id === "694857173595062354") return message.reply("I can't be muted by mere human.");
 
+
     let reason = args.slice(1).join(" ");
     if (!reason) reason = "No reason given."
 
     let muterole = message.guild.roles.cache.find(r => r.name === "Muted");
     if (!muterole) return message.channel.send("You need to create `Muted` role first.")
 
+    if (!mutee.roles.cache.find(r => r.name === "Muted")) return message.channel.send("That person is already muted")
+
     mutee.roles.add(muterole.id).then(() => {
         let embed = new Discord.MessageEmbed()
             .setTitle("You've been muted")
             .setAuthor(bot.user.username, bot.user.avatarURL())
             .setThumbnail(mutee.user.avatarURL())
-            .setDescription(`**You've been muted in:** ${message.guild.name}\n**Reason:** ${reason}\n**By:** ${message.author.username}\n**Date:** ${message.createdAt.toLocaleString()}`)
+            .setDescription(`**You've been muted in:** ${message.guild.name}\n**Reason:** ${reason}\n**By:** ${message.author.tag}\n**Date:** ${message.createdAt.toLocaleString()}`)
             .setTimestamp()
             .setColor(color.red);
         mutee.send(embed)

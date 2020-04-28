@@ -13,9 +13,9 @@ module.exports.run = async (bot, message, args) => {
 
 
     let embed = new Discord.MessageEmbed()
-        .setTitle("You've been kick")
+        .setTitle("You've been kicked")
         .setAuthor(bot.user.username, bot.user.avatarURL())
-        .setDescription(`**You've been kicked from:** ${message.guild.name}\n**Reason**: ${reason}\n**By:** ${message.author.username}\n**Date:** ${message.createdAt.toLocaleString()}`)
+        .setDescription(`**You've been kicked from:** ${message.guild.name}\n**Reason**: ${reason}\n**By:** ${message.author.tag}\n**Date:** ${message.createdAt.toLocaleString()}`)
         .setThumbnail(kickMember.user.avatarURL())
         .setTimestamp()
         .setColor(color.red);
@@ -25,12 +25,12 @@ module.exports.run = async (bot, message, args) => {
         let mutechannel = message.guild.channels.cache.find(ch => ch.name === "mutes")
 
         let embed2 = new Discord.MessageEmbed()
-            .setTitle(`${kickMember.user.username} was kicked!`)
+            .setTitle(`${kickMember.user.tag} was kicked!`)
             .setAuthor(bot.user.username, bot.user.avatarURL())
             .setThumbnail(kickMember.user.avatarURL())
-            .setDescription(`** Kicked by:** ${message.author.username}\n ** Reason **: ${reason}\n ** By:** ${message.author.username}\n ** Date:** ${message.createdAt.toLocaleString()}`)
+            .setDescription(`** Kicked by:** ${message.author.tag}\n ** Reason **: ${reason}\n ** By:** ${message.author.tag}\n ** Date:** ${message.createdAt.toLocaleString()}`)
             .setTimestamp()
-            .setColor(color.green);
+            .setColor(color.red);
 
         mutechannel.send(embed2)
     }

@@ -18,9 +18,9 @@ module.exports.run = async (bot, message, args) => {
 
     unmutee.roles.remove(unmuterole.id).then(() => {
         let embed = new Discord.MessageEmbed()
-            .setTitle("You've been muted")
+            .setTitle("You've been unmuted")
             .setAuthor(bot.user.username, bot.user.avatarURL())
-            .setDescription(`**You've been unmuted in:** ${message.guild.name}\n**Reason**: ${reason}\n**By:** ${message.author}\n**Date:** ${message.createdAt.toLocaleString()}`)
+            .setDescription(`**You've been unmuted in:** ${message.guild.name}\n**Reason**: ${reason}\n**By:** ${message.author.tag}\n**Date:** ${message.createdAt.toLocaleString()}`)
             .setTimestamp()
             .setThumbnail(unmutee.user.avatarURL())
             .setColor(color.green);
@@ -31,7 +31,7 @@ module.exports.run = async (bot, message, args) => {
             let embed2 = new Discord.MessageEmbed()
                 .setTitle(`${unmutee.user.username} was unmuted!`)
                 .setAuthor(bot.user.username, bot.user.avatarURL())
-                .setDescription(`** Unmuted by:** ${message.author}\n ** Reason **: ${reason}\n ** By:** ${message.author.username}\n ** Date:** ${message.createdAt.toLocaleString()}`)
+                .setDescription(`** Unmuted by:** ${message.author.tag}\n ** Reason **: ${reason}\n ** By:** ${message.author.username}\n ** Date:** ${message.createdAt.toLocaleString()}`)
                 .setTimestamp()
                 .setThumbnail(unmutee.user.avatarURL())
                 .setColor(color.green);
