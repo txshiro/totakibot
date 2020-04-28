@@ -32,11 +32,11 @@ module.exports.run = async (bot, message, args) => {
         let mutechannel = message.guild.channels.cache.find(ch => ch.name === "mutes")
 
         let embed2 = new Discord.MessageEmbed()
-            .setTitle(`${bannedMember.user.tag} has been unbaned!`)
+            .setTitle(`${bannedMember.tag} has been unbaned!`)
             .setAuthor(bot.user.username, bot.user.avatarURL())
             .setDescription(`**Unbanned by:** ${message.author.tag}\n ** Reason **: ${reason}\n ** By:** ${message.author.username}\n ** Date:** ${message.createdAt.toLocaleString()}`)
             .setTimestamp()
-            .setThumbnail(bannedMember.user.avatarURL())
+            .setThumbnail(bannedMember.avatarURL())
             .setColor(color.lightgreen);
 
         mutechannel.send(embed2)
