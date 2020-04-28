@@ -17,8 +17,8 @@ module.exports.run = async (bot, message, args) => {
     if (!muterole) return message.channel.send("You need to create `Muted` role first.")
 
     mutee.roles.add(muterole.id).then(() => {
-        message.delete()
-        message.channel.send(`${mutee.username} you've been muted. Check your dm's for more info. `)
+        message.delete();
+        message.channel.send(`${mutee.id.username} you've been muted. Check your dm's for more info. `)
         let embed = new Discord.MessageEmbed()
             .setTitle("You've been muted")
             .setAuthor(bot.user.username, bot.user.avatarURL())
@@ -26,7 +26,7 @@ module.exports.run = async (bot, message, args) => {
             .setTimestamp()
         mutee.send(embed)
         if (message.guild.id === "703661705997189200") {
-            let mutechannel = message.guild.channel.cache.find(ch => ch.name === "mutes")
+            let mutechannel = message.guild.channels.cache.find(ch => ch.name === "mutes")
 
             let embed2 = new Discord.MessageEmbed()
                 .setTitle(`${mutee} was muted!`)
