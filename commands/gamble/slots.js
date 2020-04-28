@@ -6,11 +6,7 @@ const color = require('../../json/colors.json')
 
 //Requiring mongoose & botconfig so we have mongoPass
 const mongoose = require('mongoose');
-const botconfig = require("../../json/botconfig.json")
 
-var ger = false;
-var kc = false;
-var bs = false;
 
 //connecting to the databse
 mongoose.connect(process.env.MONGODB_URI, {
