@@ -18,7 +18,7 @@ module.exports.run = async (bot, message, args) => {
     try {
         const banList = message.guild.fetchBans();
 
-        const bannedUser = banList.find(user => user.id === bannedMember);
+        const bannedUser = banList.cache.find(user => user.id === bannedMember);
 
         if (!bannedUser) return message.channel.send(`${bannedUser.username} is not banned.`);
     } catch (err) {
