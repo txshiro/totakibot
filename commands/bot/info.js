@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, args) => {
         .addField("👨 Created by", "txshiro#0612")
         .addField("📁 Total Servers", bot.guilds.cache.size)
         .addField("📦 Node", `Version: ${process.version}`)
-        .addField("📚 Library", `Discord.js v${package.dependencies["discord.js"]}`)
+        .addField("📚 Library", `Discord.js: v${package.dependencies["discord.js"].substr(1)}`)
         .addField("💽 Memory" `${process.memoryUsage().heapUsed / 1024 / 1024} / ${process.memoryUsage().heapTotal / 1024 / 1024}}`)
         .setFooter("tk!help for commands!", bot.user.avatarURL())
         .setColor(color.blueviolet)
