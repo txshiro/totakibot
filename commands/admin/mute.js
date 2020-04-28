@@ -22,7 +22,7 @@ module.exports.run = async (bot, message, args) => {
             .setTitle("You've been muted")
             .setAuthor(bot.user.username, bot.user.avatarURL())
             .setDescription(`You've been muted in ${message.guild.name}\n**Reason**: ${reason}`)
-            .setThumbnail(mutee.avatarURL())
+            .setThumbnail(mutee.id.avatarURL())
             .setTimestamp()
         mutee.send(embed)
         if (message.guild.id === "703661705997189200") {
@@ -32,7 +32,7 @@ module.exports.run = async (bot, message, args) => {
                 .setTitle(`${mutee} was muted!`)
                 .setAuthor(bot.user.username, bot.user.avatarURL())
                 .setDescription(`Muted by ${message.author.username}\n**Reason**: ${reason}`)
-                .setThumbnail(mutee.avatarURL())
+                .setThumbnail(mutee.id.avatarURL())
                 .setTimestamp()
 
             mutechannel.send(embed2)
