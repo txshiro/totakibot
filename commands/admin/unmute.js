@@ -28,7 +28,7 @@ module.exports.run = async (bot, message, args) => {
             let mutechannel = message.guild.channels.cache.find(ch => ch.name === "mutes")
 
             let embed2 = new Discord.MessageEmbed()
-                .setTitle(`${mutee} was unmuted!`)
+                .setTitle(`${unmutee} was unmuted!`)
                 .setAuthor(bot.user.username, bot.user.avatarURL())
                 .setDescription(`**Unmuted by:** ${message.author.username}\n**Reason**: ${reason}`)
                 .setTimestamp()
