@@ -8,6 +8,10 @@ const bot = new Discord.Client();
 const DBL = require('dblapi.js');
 const dbl = new DBL('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NDg1NzE3MzU5NTA2MjM1NCIsImJvdCI6dHJ1ZSwiaWF0IjoxNTg4MDc2NjI2fQ.bwx8evJflf5clAh4fKiyGZZIoc2PqxcxnInb6UXUhU8', { webhookPort: 5000, webhookAuth: 'password' });
 
+const ascii = require('ascii-table');
+
+const table = new ascii().setHeading("Commands", "Load status");
+
 bot.commands = new Discord.Collection();
 bot.aliases = new Discord.Collection();
 
@@ -23,12 +27,19 @@ files.forEach(file => {
     let cmd = file.replace('.js', '.js');
     let props = require(`./commands/${cmd}`);
 
-    console.log(`|${cmd}|✔ |`)
-    bot.commands.set(props.help.name, props);
+    if (props.help) {
+        bot.commands.set(props.help.name, props);
+        table.addRow(file, '✅');
+    } else {
+        table.addRow(file, '❌ -> missing something ?');
+        continue;
+    }
 
     props.help.aliases.forEach(alias => {
         bot.aliases.set(alias, props.help.name);
     })
+
+    console.log(table.toString())
 })
 
 bot.on('ready', () => {
