@@ -34,7 +34,7 @@ module.exports.run = async (bot, message, args) => {
                 .setAuthor(bot.user.username, bot.user.avatarURL())
                 .setDescription(`** Muted by:** ${message.author.tag}\n ** Reason **: ${reason}\n ** Date:** ${message.createdAt.toLocaleString()}`)
                 .setTimestamp()
-                .setColor(color.seagreen);
+                .setColor(color.red);
 
             mutechannel.send(embed2)
         } else {
