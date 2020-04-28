@@ -10,47 +10,35 @@ module.exports.run = async (bot, message, args) => {
     if (banMember.id === message.author.id) return message.reply("You can't use this command on yourself.")
     if (banMember.id === "694857173595062354") return message.reply("You can't use this command on bot.");
 
-    if (!args[1]) return message.reply("Specify on how many days.")
-    if (args[1] != Math.floor(args[1])) return message.reply("You can use only numbers");
-
-    try {
-        var tempb = parseInt(args[1])
-    } catch{
-        message.reply("You can only use whole numbers")
-    };
-
-    let reason = args.slice(2).join(" ");
-    if (!reason) reason = "No reason given.";
-
-    message.guild.ban(banMember, { days: tempb, reason: reason }).catch(err => console.log(err))
-
+    let reason = args.slice(1).join(" ");
+    if (!reason) reason = "No reason given."
 
     let embed = new Discord.MessageEmbed()
-        .setTitle("You've been Softbanned")
+        .setTitle("You've been banned")
         .setAuthor(bot.user.username, bot.user.avatarURL())
-        .setDescription(`**You've been banned in:** ${message.guild.name}\n**Reason**: ${reason}\n**For:** ${tempb} days\n**By:** ${message.author.tag}\n**Date:** ${message.createdAt.toLocaleString()}`)
+        .setDescription(`**You've been banned in:** ${message.guild.name}\n**Reason**: ${reason}\n**By:** ${message.author.tag}\n**Date:** ${message.createdAt.toLocaleString()}`)
         .setTimestamp()
-        .setThumbnail(banMember.user.avatarURL())
+        .setThumbnail(unmutee.user.avatarURL())
         .setColor(color.darkred);
     banMember.send(embed)
     if (message.guild.id === "703661705997189200") {
         let mutechannel = message.guild.channels.cache.find(ch => ch.name === "mutes")
 
         let embed2 = new Discord.MessageEmbed()
-            .setTitle(`${banMember.user.tag} was Softbaned!`)
+            .setTitle(`${unmutee.user.tag} was banned!`)
             .setAuthor(bot.user.username, bot.user.avatarURL())
-            .setDescription(`** Banned by:** ${message.author.tag}\n ** Reason **: ${reason}\n**For:** ${tempb}\n ** By:** ${message.author.username}\n ** Date:** ${message.createdAt.toLocaleString()}`)
+            .setDescription(`** Banned by:** ${message.author.tag}\n ** Reason **: ${reason}\n ** By:** ${message.author.username}\n ** Date:** ${message.createdAt.toLocaleString()}`)
             .setTimestamp()
-            .setThumbnail(banMember.user.avatarURL())
+            .setThumbnail(unmutee.user.avatarURL())
             .setColor(color.lightgreen);
 
         mutechannel.send(embed2)
     }
 }
 module.exports.help = {
-    name: 'softban',
+    name: 'ban',
     aliases: [],
-    description: "Softban user!",
+    description: "Ban user!",
     noaliases: "None",
     accessability: "Admin/Moderators"
 }
