@@ -14,7 +14,7 @@ module.exports.run = async (bot, message, args) => {
         return `${days.padStart(1, '0')} days, ${hrs.padStart(2, '0')} hours, ${min.padStart(2, '0')} minutes, ${sec.padStart(2, '0')} seconds.`
     }
 
-    message.channel.send("͔").then(m => {
+    message.channel.send("Getting info...").then(m => {
         let ping = m.createdTimestamp - message.createdTimestamp
 
         let embed = new Discord.MessageEmbed()
@@ -31,7 +31,7 @@ module.exports.run = async (bot, message, args) => {
             .setColor(color.blueviolet)
             .setThumbnail(bot.user.avatarURL())
             .setTimestamp();
-        message.edit(embed)
+        m.edit(embed)
     })
 
 }
