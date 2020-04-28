@@ -20,7 +20,7 @@ module.exports.run = async (bot, message, args) => {
 
         const bannedUser = banList.find(user => user.id === bannedMember.id);
 
-        if (!bannedUser) return message.channel.send(`${bannedUser.username} is not banned.`);
+        if (!bannedUser) return message.channel.send(`${bannedUser} is not banned.`);
     } catch (err) {
         console.error(err);
     }
