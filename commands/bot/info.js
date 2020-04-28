@@ -1,15 +1,14 @@
 const Discord = require('discord.js');
 const package = require("../../package.json")
 const color = require("../../json/colors.json")
-const fs = require('fs');
 const read = require('fs-readdir-recursive');
 
 
 const files = read('../../commands');
 files.forEach(file, err => {
-    if (err) return console.log(err);
     let cmd = file.replace('.js', '.js');
     let props = require(`./commands/${cmd}`);
+    if (err) return console.log(err);
 
     console.log(props.length)
 
