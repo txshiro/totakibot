@@ -4,7 +4,7 @@ module.exports.run = async (bot, message, args) => {
 }
 
 module.exports.help = {
-    name: 'PP',
+    name: 'pp',
     aliases: [],
     description: "Get your PP size",
     noaliases: "None",
