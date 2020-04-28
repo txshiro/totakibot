@@ -32,7 +32,7 @@ module.exports.run = async (bot, message, args) => {
         let mutechannel = message.guild.channels.cache.find(ch => ch.name === "mutes")
 
         let embed2 = new Discord.MessageEmbed()
-            .setTitle(`${unmutee.user.tag} was unbaned!`)
+            .setTitle(`${unmutee.user.tag} has been unbaned!`)
             .setAuthor(bot.user.username, bot.user.avatarURL())
             .setDescription(`**Unbanned by:** ${message.author.tag}\n ** Reason **: ${reason}\n ** By:** ${message.author.username}\n ** Date:** ${message.createdAt.toLocaleString()}`)
             .setTimestamp()
