@@ -1,8 +1,29 @@
 const Discord = require('discord.js');
 const package = require("../../package.json")
 const color = require("../../json/colors.json")
+const fs = require('fs');
+const read = require('fs-readdir-recursive');
+
+
+const files = read('../../commands');
+files.forEach(file, err => {
+    if (err) return console.log(err);
+    let cmd = file.replace('.js', '.js');
+    let props = require(`./commands/${cmd}`);
+
+    console.log(props.length)
+
+});
 
 module.exports.run = async (bot, message, args) => {
+
+    fs.readdir(dir, (err, files) => {
+        let cmd = file.replace('.js', '.js');
+        let props = require(`./commands/${cmd}`);
+
+        console.log(props.length)
+
+    });
 
 
     let embed = new Discord.MessageEmbed()
@@ -12,6 +33,7 @@ module.exports.run = async (bot, message, args) => {
         .addField("📦 Node", `Version: ${process.version}`)
         .addField("📚 Library", `Discord.js: v${package.dependencies["discord.js"].substr(1)}`)
         .addField("💽 Memory", `${(parseInt(process.memoryUsage().heapUsed / 1024 / 1024))} / ${parseInt(process.memoryUsage().heapTotal / 1024 / 1024)}`)
+        .addField("Commands Count", props.length)
         .setFooter("tk!help for commands!", bot.user.avatarURL())
         .setColor(color.blueviolet)
         .setThumbnail(bot.user.avatarURL())

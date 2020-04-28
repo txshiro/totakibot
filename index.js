@@ -34,7 +34,7 @@ files.forEach(file => {
 bot.on('ready', () => {
 
     bot.user.setActivity('tk!help', { type: 'PLAYING' }).catch(console.error);
-    console.log("[Bot]: Pripraveny")
+    console.log(`[${bot.user.username}]: ready!`)
 
 })
 bot.on('guildMemberAdd', member => {
