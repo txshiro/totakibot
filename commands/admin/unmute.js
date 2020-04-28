@@ -7,43 +7,41 @@ module.exports.run = async (bot, message, args) => {
 
     let mutee = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
     if (!mutee) return message.reply("You need to specify a user!")
-    if (mutee.id === message.author.id) return message.reply("You can't mute yourself.")
-    if (mutee.id === "694857173595062354") return message.reply("I can't be muted by mere human.");
+    if (mutee.id === message.author.id) return message.reply("You can't use this command on yourself.")
+    if (unmutee.id === "694857173595062354") return message.reply("You can't use this command on bot.");
 
     let reason = args.slice(1).join(" ");
     if (!reason) reason = "No reason given."
 
     let muterole = message.guild.roles.cache.find(r => r.name === "Muted");
-    if (!muterole) return message.channel.send("You need to create `Muted` role first.")
+    if (mutee.roles.has(muterole.id)) return message.channel.send("That person isn't muted")
 
-    mutee.roles.add(muterole.id).then(() => {
+    mutee.roles.remove(muterole.id).then(() => {
         let embed = new Discord.MessageEmbed()
             .setTitle("You've been muted")
             .setAuthor(bot.user.username, bot.user.avatarURL())
-            .setDescription(`**You've been muted in:** ${message.guild.name}\n**Reason**: ${reason}`)
+            .setDescription(`**You've been unmuted in:** ${message.guild.name}\n**Reason**: ${reason}`)
             .setTimestamp()
-            .setColor(color.red);
+            .setColor(color.green);
         mutee.send(embed)
         if (message.guild.id === "703661705997189200") {
             let mutechannel = message.guild.channels.cache.find(ch => ch.name === "mutes")
 
             let embed2 = new Discord.MessageEmbed()
-                .setTitle(`${mutee} was muted!`)
+                .setTitle(`${mutee} was unmuted!`)
                 .setAuthor(bot.user.username, bot.user.avatarURL())
-                .setDescription(`**Muted by:** ${message.author.username}\n**Reason**: ${reason}`)
+                .setDescription(`**Unmuted by:** ${message.author.username}\n**Reason**: ${reason}`)
                 .setTimestamp()
-                .setColor(color.seagreen);
+                .setColor(color.green);
 
             mutechannel.send(embed2)
-        } else {
-            console.log("yes")
         }
     })
 }
 module.exports.help = {
-    name: 'mute',
+    name: 'unmute',
     aliases: [],
-    description: "Mute user!",
+    description: "Unmute user!",
     noaliases: "None",
-    accessability: "Admin/Moderators    "
+    accessability: "Admin/Moderators"
 }
