@@ -16,7 +16,7 @@ module.exports.run = async (bot, message, args) => {
     message.guild.members.ban(banMember, { reason: reason }).catch(err => console.log(err))
 
     let embed = new Discord.MessageEmbed()
-        .setTitle("You've been Permabanned")
+        .setTitle("You've been Perma-banned")
         .setAuthor(bot.user.username, bot.user.avatarURL())
         .setDescription(`**You've been banned in:** ${message.guild.name}\n**Reason**: ${reason}\n**By:** ${message.author.tag}\n**Date:** ${message.createdAt.toLocaleString()}`)
         .setTimestamp()
@@ -27,12 +27,12 @@ module.exports.run = async (bot, message, args) => {
         let mutechannel = message.guild.channels.cache.find(ch => ch.name === "mutes")
 
         let embed2 = new Discord.MessageEmbed()
-            .setTitle(`${banMember.user.tag} has been Permabanned!`)
+            .setTitle(`${banMember.user.tag} has been Perma-banned!`)
             .setAuthor(bot.user.username, bot.user.avatarURL())
             .setDescription(`** Banned by:** ${message.author.tag}\n ** Reason **: ${reason}\n ** By:** ${message.author.username}\n ** Date:** ${message.createdAt.toLocaleString()}`)
             .setTimestamp()
             .setThumbnail(banMember.user.avatarURL())
-            .setColor(color.lightgreen);
+            .setColor(color.darkred);
 
         mutechannel.send(embed2)
     }
