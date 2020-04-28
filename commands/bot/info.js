@@ -9,7 +9,7 @@ module.exports.run = async (bot, message, args) => {
     let embed = new Discord.MessageEmbed()
         .setAuthor(message.author.username, message.author.avatarURL())
         .addField("👨 Created by", "txshiro#0612")
-        .addField("📁 Total Servers", bot.servers.size)
+        .addField("📁 Total Servers", bot.guilds.cache.size)
         .addField("📦 Node", `Version: ${process.version}`)
         .addField("📚 Library", `Discord.js v${package.dependencies["discord.js"]}`)
         .setFooter("tk!help for commands!", bot.user.avatarURL())
