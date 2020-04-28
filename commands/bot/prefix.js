@@ -13,16 +13,12 @@ module.exports.run = async (bot, message, args) => {
     }
     let prefix = prefixes[message.guild.id].prefix;
 
-    prefixes[message.guild.id] = {
-        prefix: args[0]
-    }
-
     let embed = new Discord.MessageEmbed()
-        .setTitle("Prefix Infi=o")
+        .setTitle("Prefix Info")
         .setColor(color.pink)
-        .setDescription(`**Your current prefix is:** ${prefixes[message.guild.id].prefix}\n${prefixes[message.guild.id].prefix}setprefix if you want to change prefix!`)
+        .setDescription(`**Your current prefix is:** ${prefixes[message.guild.id]}\n${prefixes[message.guild.id]}setprefix if you want to change prefix!`)
         .setTimestamp()
-        .setFooter(`${prefixes[message.guild.id].prefix}help for commands`);
+        .setFooter(`${prefixes[message.guild.id]}help for commands`);
 
     message.channel.send(embed)
 }

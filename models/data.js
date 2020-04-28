@@ -8,6 +8,7 @@ const dataSchema = mongoose.Schema({
     lb: String,
     money: Number,
     daily: Number,
+    serverprefix: String
 })
 
 module.exports = mongoose.model(`Data`, dataSchema)
