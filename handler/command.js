@@ -6,10 +6,10 @@ const { readdirSync } = require('fs')
 
 module.exports = (bot) => {
     readdirSync("./commands/").forEach(dir => {
-        const commands = readdirSync(`./commands/${dir}/`).filter(f => f.endsWith(".js"));
+        const commands = readdirSync(`../commands/${dir}/`).filter(f => f.endsWith(".js"));
 
         for (let file of commands) {
-            let pull = require(`./commands/${dir}/${file}`);
+            let pull = require(`../commands/${dir}/${file}`);
 
             if (pull.help) {
                 bot.commands.set(pull.help.name, pull);
