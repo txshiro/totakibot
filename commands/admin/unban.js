@@ -16,7 +16,7 @@ module.exports.run = async (bot, message, args) => {
 
 
     try {
-        const banList = await message.guild.fetchBans();
+        const banList = message.guild.fetchBans();
 
         const bannedUser = banList.find(user => user.id === bannedMember);
 
