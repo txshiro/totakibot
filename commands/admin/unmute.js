@@ -14,7 +14,7 @@ module.exports.run = async (bot, message, args) => {
     if (!reason) reason = "No reason given."
 
     let unmuterole = message.guild.roles.cache.find(r => r.name === "Muted");
-    if (unmutee.roles.has(muterole.id)) return message.channel.send("That person isn't muted")
+    if (unmutee.roles.has(unmuterole.id)) return message.channel.send("That person isn't muted")
 
     unmutee.roles.remove(unmuterole.id).then(() => {
         let embed = new Discord.MessageEmbed()
