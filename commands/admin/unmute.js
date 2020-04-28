@@ -9,6 +9,9 @@ module.exports.run = async (bot, message, args) => {
     if (!unmutee) return message.reply("You need to specify a user!")
     if (unmutee.id === message.author.id) return message.reply("You can't use this command on yourself.")
     if (unmutee.id === "694857173595062354") return message.reply("You can't use this command on bot.");
+    let kickMember = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
+    if (kickMember) return message.reply("This user isn't banned")
+
 
     let reason = args.slice(1).join(" ");
     if (!reason) reason = "No reason given."
