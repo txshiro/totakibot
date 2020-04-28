@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, args) => {
             prefix: config.prefix
         }
     }
-    let prefix = prefix[message.guild.id].prefix;
+    let prefix = prefixes[message.guild.id].prefix;
 
     if (!message.member.hasPermission("MANAGE_GUILD")) return message.reply("You can't use this command!");
 
@@ -30,12 +30,14 @@ module.exports.run = async (bot, message, args) => {
         .setColor(color.springgreen)
         .setDescription(`**Your new prefix is:** ${args[0]}`)
         .setTimestamp()
-        .setFooter(`${prefixes[message.guild.id].prefix}help for commands`)
+        .setFooter(`${prefixes[message.guild.id].prefix}help for commands`);
+
+    message.channel.send(embed)
 }
 
 module.exports.help = {
     name: 'setprefix',
-    aliases: ['sp'],
+    aliases: ['sp',],
     description: "Change current prefix",
     noaliases: "sp",
     accessability: "Admin/Moderators"
