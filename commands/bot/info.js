@@ -10,7 +10,7 @@ module.exports.run = async (bot, message, args) => {
         .setAuthor(message.author.username, message.author.avatarURL())
         .addField("👨 Created by", "txshiro#0612")
         .addField("📁 Total Servers", bot.guilds.size)
-        .addField("⚙️ Node", `Version`)
+        .addField("📦 Node" `Version: ${process.version}`)
         .addField("📚Library", `Discord.js ${package.dependencies["discord.js"]}`)
         .setFooter("tk!help for commands!", bot.user.avatarURL())
         .setTimestamp();
