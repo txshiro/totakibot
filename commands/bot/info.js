@@ -7,26 +7,21 @@ const { readdirSync } = require('fs')
 module.exports.run = async (bot, message, args) => {
 
 
+    let embed = new Discord.MessageEmbed()
+        .setAuthor(message.author.username, message.author.avatarURL())
+        .addField("👨 Created by", "txshiro#0612")
+        .addField("📁 Total Servers", bot.guilds.cache.size)
+        .addField("📦 Node", `Version: ${process.version}`)
+        .addField("📚 Library", `Discord.js: v${package.dependencies["discord.js"].substr(1)}`)
+        .addField("💽 Memory", `${(parseInt(process.memoryUsage().heapUsed / 1024 / 1024))} / ${parseInt(process.memoryUsage().heapTotal / 1024 / 1024)}`)
+        .addField("🤖 Commands Count", '24')
+        .setFooter("tk!help for commands!", bot.user.avatarURL())
+        .setColor(color.blueviolet)
+        .setThumbnail(bot.user.avatarURL())
+        .setTimestamp();
 
-    readdirSync("./commands/").forEach(dir => {
-        const commands = readdirSync(`./commands/${dir}/`).filter(f => f.endsWith(".js"));
+    message.channel.send(embed)
 
-
-        let embed = new Discord.MessageEmbed()
-            .setAuthor(message.author.username, message.author.avatarURL())
-            .addField("👨 Created by", "txshiro#0612")
-            .addField("📁 Total Servers", bot.guilds.cache.size)
-            .addField("📦 Node", `Version: ${process.version}`)
-            .addField("📚 Library", `Discord.js: v${package.dependencies["discord.js"].substr(1)}`)
-            .addField("💽 Memory", `${(parseInt(process.memoryUsage().heapUsed / 1024 / 1024))} / ${parseInt(process.memoryUsage().heapTotal / 1024 / 1024)}`)
-            .addField("Commands Count", commands.length)
-            .setFooter("tk!help for commands!", bot.user.avatarURL())
-            .setColor(color.blueviolet)
-            .setThumbnail(bot.user.avatarURL())
-            .setTimestamp();
-
-        message.channel.send(embed)
-    })
 }
 
 module.exports.help = {
