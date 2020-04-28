@@ -5,16 +5,6 @@ const read = require('fs-readdir-recursive');
 
 module.exports.run = async (bot, message, args) => {
 
-    const files = read('../../commands');
-    files.forEach(file => {
-        let cmd = file.replace('.js', '.js');
-        let props = require(`./commands/${cmd}`);
-
-        console.log(props.length)
-
-    });
-
-
     let embed = new Discord.MessageEmbed()
         .setAuthor(message.author.username, message.author.avatarURL())
         .addField("👨 Created by", "txshiro#0612")
@@ -28,8 +18,13 @@ module.exports.run = async (bot, message, args) => {
         .setThumbnail(bot.user.avatarURL())
         .setTimestamp();
 
+    const files = read('../../commands');
+    files.forEach(file => {
+        let cmd = file.replace('.js', '.js');
+        let props = require(`./commands/${cmd}`);
+        embed.addField("Commands Count", props.length)
 
-
+    });
     message.channel.send(embed)
 }
 

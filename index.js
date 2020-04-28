@@ -41,9 +41,9 @@ readdirSync("./commands/").forEach(dir => {
         if (pull.help.aliases && Array.isArray(pull))
             pull.help.aliases.forEach(alias => bot.aliases.set(alias, pull.help.name));
     }
-
-    console.log(table.toString())
 });
+
+console.log(table.toString())
 
 bot.on('ready', () => {
 
