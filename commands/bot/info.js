@@ -3,17 +3,17 @@ const package = require("../../package.json")
 const color = require("../../json/colors.json")
 const read = require('fs-readdir-recursive');
 
-
-const files = read('../../commands');
-files.forEach(file => {
-    let cmd = file.replace('.js', '.js');
-    let props = require(`./commands/${cmd}`);
-
-    console.log(props.length)
-
-});
-
 module.exports.run = async (bot, message, args) => {
+
+    const files = read('../../commands');
+    files.forEach(file => {
+        let cmd = file.replace('.js', '.js');
+        let props = require(`./commands/${cmd}`);
+
+        console.log(props.length)
+
+    });
+
 
     let embed = new Discord.MessageEmbed()
         .setAuthor(message.author.username, message.author.avatarURL())

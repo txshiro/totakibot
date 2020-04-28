@@ -12,6 +12,8 @@ const ascii = require('ascii-table');
 
 const table = new ascii().setHeading("Commands", "Load status");
 
+const { readdirSync } = require('fs')
+
 bot.commands = new Discord.Collection();
 bot.aliases = new Discord.Collection();
 
@@ -22,24 +24,26 @@ dbl.webhook.on('vote', vote => {
     console.log(`User with ID ${vote.user} just voted!`);
 });
 
-const files = read('./commands/');
-files.forEach(file => {
-    let cmd = file.replace('.js', '.js');
-    let props = require(`./commands/${cmd}`);
+readdirSync("./commands/").forEach(dir => {
+    const commands = readdirSync(`./commands/${dir}/`).filter(f => f.endsWith(".js"));
 
-    if (props.help) {
-        bot.commands.set(props.help.name, props);
-        table.addRow(file, '✅');
-    } else {
-        table.addRow(file, '❌ -> missing something ?');
+    for (let file of commands) {
+        let pull = require(`./commands/${dir}/${file}`);
+
+        if (pull.help) {
+            bot.commands.set(props.help.name, props);
+            table.addRow(file, '✅');
+        } else {
+            table.addRow(file, '❌ -> missing something ?');
+            continue;
+        }
+
+        if (pull.help.aliases && Array.isArray(pull))
+            pull.help.aliases.forEach(alias => bot.aliases.set(alias, pull.help.name));
     }
 
-    props.help.aliases.forEach(alias => {
-        bot.aliases.set(alias, props.help.name);
-    })
-
     console.log(table.toString())
-})
+});
 
 bot.on('ready', () => {
 
