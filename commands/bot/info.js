@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 var os = require('os');
+const package = require("../../package.json")
 
 
 module.exports.run = async (bot, message, args) => {
@@ -7,10 +8,10 @@ module.exports.run = async (bot, message, args) => {
 
     let embed = new Discord.MessageEmbed()
         .setAuthor(message.author.username, message.author.avatarURL())
-        .addField("📁 Total Servers")
-        .addField("⚙️ Library", "Discord.js")
-        .addField("CPU Usage", os.cpus())
-        .addField(":inbox_tray: Version")
+        .addField("👨 Created by", "txshiro#0612")
+        .addField("📁 Total Servers", bot.guilds.size)
+        .addField("⚙️ Node", `Version`)
+        .addField("📚Library", `Discord.js ${package.dependencies["discord.js"]}`)
         .setFooter("tk!help for commands!", bot.user.avatarURL())
         .setTimestamp();
 
