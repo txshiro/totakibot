@@ -12,18 +12,13 @@ module.exports.run = async (bot, message, args) => {
     if (bannedMember.id === "694857173595062354") return message.reply("You can't use this command on bot.");
 
     let reason = args.slice(1).join(" ");
-    if (!reason) reason = "No reason given."
+    if (!reason) reason = "No reason given.";
 
+    const banList = await message.guild.fetchBans();
 
-    try {
-        const banList = await message.guild.fetchBans();
+    const bannedUser = banList.find(user => user.id === bannedMember.id);
 
-        const bannedUser = banList.find(user => user.id === bannedMember.id);
-
-        if (!bannedUser) return message.channel.send(`${bannedUser} is not banned.`);
-    } catch (err) {
-        console.error(err);
-    }
+    if (!bannedUser) return message.channel.send(`${bannedUser.tag} is not banned.`);
 
     try {
         message.guild.members.unban(bannedMember, reason)
