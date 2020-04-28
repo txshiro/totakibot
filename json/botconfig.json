@@ -1,0 +1,4 @@
+{
+	"mongoPass": "mongodb://txshiro:adrianko1171@yepcock-shard-00-00-eeh3w.mongodb.net:27017,yepcock-shard-00-01-eeh3w.mongodb.net:27017,yepcock-shard-00-02-eeh3w.mongodb.net:27017/SERVERS?ssl=true&replicaSet=YEPCOCK-shard-0&authSource=admin&retryWrites=true&w=majority"
+}
+
