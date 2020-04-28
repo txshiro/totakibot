@@ -20,18 +20,20 @@ module.exports.run = async (bot, message, args) => {
         let embed = new Discord.MessageEmbed()
             .setTitle("You've been muted")
             .setAuthor(bot.user.username, bot.user.avatarURL())
-            .setDescription(`**You've been unmuted in:** ${message.guild.name}\n**Reason**: ${reason}\n**By:** ${message.author.username}`)
+            .setDescription(`**You've been unmuted in:** ${message.guild.name}\n**Reason**: ${reason}\n**By:** ${message.author.username}\n**Date:** ${message.createdAt.toLocaleString()}`)
             .setTimestamp()
+            .setThumbnail(unmutee.user.avatarURL())
             .setColor(color.green);
         unmutee.send(embed)
         if (message.guild.id === "703661705997189200") {
             let mutechannel = message.guild.channels.cache.find(ch => ch.name === "mutes")
 
             let embed2 = new Discord.MessageEmbed()
-                .setTitle(`${unmutee} was unmuted!`)
+                .setTitle(`${unmutee.user.username} was unmuted!`)
                 .setAuthor(bot.user.username, bot.user.avatarURL())
-                .setDescription(`**Unmuted by:** ${message.author.username}\n**Reason**: ${reason}\n**By:** ${message.author.username}\n**Date:** ${message.createdAt.toLocaleString()}`)
+                .setDescription(`** Unmuted by:** ${message.author.username}\n ** Reason **: ${reason}\n ** By:** ${message.author.username}\n ** Date:** ${message.createdAt.toLocaleString()}`)
                 .setTimestamp()
+                .setThumbnail(unmutee.user.avatarURL())
                 .setColor(color.green);
 
             mutechannel.send(embed2)
