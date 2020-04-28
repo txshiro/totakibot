@@ -6,21 +6,33 @@ const { readdirSync } = require('fs')
 
 module.exports.run = async (bot, message, args) => {
 
+    function duration(ms) {
+        const sec = Math.floor((ms / 1000) % 60).toString()
+        const min = Math.floor((ms / (1000 * 60)) % 60).toString()
+        const hrs = Math.floor((ms / (1000 * 60 * 60)) % 60).toString()
+        const days = Math.floor((ms / (1000 * 60 * 60 * 24)) % 60).toString()
+        return `${days.padStart(1, '0')} days, ${hrs.padStart(2, '0')} hours, ${min.padStart(2, '0')} minutes, ${sec.padStart(2, '0')} seconds.`
+    }
 
-    let embed = new Discord.MessageEmbed()
-        .setAuthor(message.author.username, message.author.avatarURL())
-        .addField("👨 Created by", "txshiro#0612")
-        .addField("📁 Total Servers", bot.guilds.cache.size)
-        .addField("📦 Node", `Version: ${process.version}`)
-        .addField("📚 Library", `Discord.js: v${package.dependencies["discord.js"].substr(1)}`)
-        .addField("💽 Memory", `${(parseInt(process.memoryUsage().heapUsed / 1024 / 1024))} / ${parseInt(process.memoryUsage().heapTotal / 1024 / 1024)}`)
-        .addField("🤖 Commands Count", '24')
-        .setFooter("tk!help for commands!", bot.user.avatarURL())
-        .setColor(color.blueviolet)
-        .setThumbnail(bot.user.avatarURL())
-        .setTimestamp();
+    message.channel.send("͔").then(m => {
+        let ping = m.createdTimestamp - message.createdTimestamp
 
-    message.channel.send(embed)
+        let embed = new Discord.MessageEmbed()
+            .setAuthor(message.author.username, message.author.avatarURL())
+            .addField("👨 Created by", "txshiro#0612")
+            .addField("📁 Total Servers", bot.guilds.cache.size)
+            .addField("📦 Node", `Version: ${process.version}`)
+            .addField("📚 Library", `Discord.js: v${package.dependencies["discord.js"].substr(1)}`)
+            .addField("💽 Memory", `${(parseInt(process.memoryUsage().heapUsed / 1024 / 1024))} / ${parseInt(process.memoryUsage().heapTotal / 1024 / 1024)}`)
+            .addField("🤖 Commands Count", '27')
+            .addField("🏓 Ping", ping)
+            .addField("🕒 Uptime", duration(bot.uptime))
+            .setFooter("tk!help for commands!", bot.user.avatarURL())
+            .setColor(color.blueviolet)
+            .setThumbnail(bot.user.avatarURL())
+            .setTimestamp();
+        message.edit(embed)
+    })
 
 }
 

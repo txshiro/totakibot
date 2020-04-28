@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const color = require('../../json/colors.json');
 
 module.exports.run = async (bot, message, args) => {
     if (!message.member.hasPermission("KICK_MEMBERS")) return message.reply("You don't have enough permissions!");
