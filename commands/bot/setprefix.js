@@ -13,14 +13,22 @@ module.exports.run = async (bot, message, args) => {
     }
     let prefix = prefixes[message.guild.id].prefix;
 
+    if (!message.member.hasPermission("MANAGE_GUILD")) return message.reply("You can't use this command!");
+
+    if (!args[0]) return message.reply("Please enter a prefix!");
+
     prefixes[message.guild.id] = {
         prefix: args[0]
     }
 
+    fs.writeFile("././json/prefixes.json", JSON.stringify(prefixes), (err) => {
+        if (err) console.log(err)
+    })
+
     let embed = new Discord.MessageEmbed()
-        .setTitle("Prefix Infi=o")
-        .setColor(color.pink)
-        .setDescription(`**Your current prefix is:** ${prefixes[message.guild.id].prefix}\n${prefixes[message.guild.id].prefix}setprefix if you want to change prefix!`)
+        .setTitle("Prefix change")
+        .setColor(color.springgreen)
+        .setDescription(`**Your new prefix is:** ${args[0]}`)
         .setTimestamp()
         .setFooter(`${prefixes[message.guild.id].prefix}help for commands`);
 
@@ -28,9 +36,9 @@ module.exports.run = async (bot, message, args) => {
 }
 
 module.exports.help = {
-    name: 'prefix',
-    aliases: [],
-    description: "View current prefix",
-    noaliases: "",
-    accessability: "Everybody"
+    name: 'setprefix',
+    aliases: ['sp',],
+    description: "Change current prefix",
+    noaliases: "sp",
+    accessability: "Admin/Moderators"
 }
