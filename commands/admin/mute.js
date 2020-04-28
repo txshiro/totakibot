@@ -17,13 +17,12 @@ module.exports.run = async (bot, message, args) => {
     if (!muterole) return message.channel.send("You need to create `Muted` role first.")
 
     mutee.roles.add(muterole.id).then(() => {
-        message.edit(`${mutee} you've been muted. Check your dm's for more info.`);
-        message.channel.send(`${mutee} `)
+        message.delete()
+        message.channel.send(`${mutee.username} you've been muted. Check your dm's for more info. `)
         let embed = new Discord.MessageEmbed()
             .setTitle("You've been muted")
             .setAuthor(bot.user.username, bot.user.avatarURL())
             .setDescription(`You've been muted in ${message.guild.name}\n**Reason**: ${reason}`)
-            .setThumbnail(mutee.avatarURL())
             .setTimestamp()
         mutee.send(embed)
         if (message.guild.id === "703661705997189200") {
@@ -33,7 +32,6 @@ module.exports.run = async (bot, message, args) => {
                 .setTitle(`${mutee} was muted!`)
                 .setAuthor(bot.user.username, bot.user.avatarURL())
                 .setDescription(`Muted by ${message.author.username}\n**Reason**: ${reason}`)
-                .setThumbnail(mutee.avatarURL())
                 .setTimestamp()
 
             mutechannel.send(embed2)
