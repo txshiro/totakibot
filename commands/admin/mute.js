@@ -13,16 +13,16 @@ module.exports.run = async (bot, message, args) => {
     let reason = args.slice(1).join(" ");
     if (!reason) reason = "No reason given"
 
-    let muterole = message.guild.roles.find(r => r.name === "Muted");
+    let muterole = message.guild.roles.cache.find(r => r.name === "Muted");
     if (!muterole) {
         try {
-            muterole = await message.guild.createRole({
+            muterole = await message.guild.roles.create({
                 name: "Muted",
                 color: color.grey,
                 permissions: []
             })
             message.guild.channels.forEach(async (channel, id) => {
-                await channel.overwritePermissions(muterole, {
+                await channel.createOverwrite(muterole, {
                     SEND_MESSAGES: false,
                     ADD_REACTIONS: false,
                     SEND_TTS_MESSAGES: false,
