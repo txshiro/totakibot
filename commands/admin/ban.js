@@ -33,7 +33,7 @@ module.exports.run = async (bot, message, args) => {
     let embed = new Discord.MessageEmbed()
         .setTitle("You've been banned")
         .setAuthor(bot.user.username, bot.user.avatarURL())
-        .setDescription(`**You've been banned in:** ${message.guild.name}\n**Reason**: ${reason}\n**For:** ${tempb} ${typeb} days\n**By:** ${message.author.tag}\n**Date:** ${message.createdAt.toLocaleString()}`)
+        .setDescription(`**You've been banned in:** ${message.guild.name}\n**Reason**: ${reason}\n**For:** ${tempb} ${typeb}\n**By:** ${message.author.tag}\n**Date:** ${message.createdAt.toLocaleString()}`)
         .setTimestamp()
         .setThumbnail(banMember.user.avatarURL())
         .setColor(color.darkred);

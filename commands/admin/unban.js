@@ -26,7 +26,7 @@ module.exports.run = async (bot, message, args) => {
         .setDescription(`**You've been unbanned in:** ${message.guild.name}\n**Reason**: ${reason}\n**By:** ${message.author.tag}\n**Date:** ${message.createdAt.toLocaleString()}`)
         .setTimestamp()
         .setColor(color.darkred);
-    banMember.send(embed)
+    bannedMember.send(embed)
     if (message.guild.id === "703661705997189200") {
         let mutechannel = message.guild.channels.cache.find(ch => ch.name === "mutes")
 
