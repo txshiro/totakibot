@@ -31,7 +31,7 @@ readdirSync("./commands/").forEach(dir => {
         let pull = require(`./commands/${dir}/${file}`);
 
         if (pull.help) {
-            bot.commands.set(props.help.name, props);
+            bot.commands.set(pull.help.name, props);
             table.addRow(file, '✅');
         } else {
             table.addRow(file, '❌ -> missing something ?');
