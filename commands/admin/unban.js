@@ -25,18 +25,18 @@ module.exports.run = async (bot, message, args) => {
         .setAuthor(bot.user.username, bot.user.avatarURL())
         .setDescription(`**You've been unbanned in:** ${message.guild.name}\n**Reason**: ${reason}\n**By:** ${message.author.tag}\n**Date:** ${message.createdAt.toLocaleString()}`)
         .setTimestamp()
-        .setThumbnail(unmutee.user.avatarURL())
+        .setThumbnail(bannedMember.user.avatarURL())
         .setColor(color.darkred);
     banMember.send(embed)
     if (message.guild.id === "703661705997189200") {
         let mutechannel = message.guild.channels.cache.find(ch => ch.name === "mutes")
 
         let embed2 = new Discord.MessageEmbed()
-            .setTitle(`${unmutee.user.tag} has been unbaned!`)
+            .setTitle(`${bannedMember.user.tag} has been unbaned!`)
             .setAuthor(bot.user.username, bot.user.avatarURL())
             .setDescription(`**Unbanned by:** ${message.author.tag}\n ** Reason **: ${reason}\n ** By:** ${message.author.username}\n ** Date:** ${message.createdAt.toLocaleString()}`)
             .setTimestamp()
-            .setThumbnail(unmutee.user.avatarURL())
+            .setThumbnail(bannedMember.user.avatarURL())
             .setColor(color.lightgreen);
 
         mutechannel.send(embed2)
