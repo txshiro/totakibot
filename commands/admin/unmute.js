@@ -20,7 +20,7 @@ module.exports.run = async (bot, message, args) => {
         let embed = new Discord.MessageEmbed()
             .setTitle("You've been muted")
             .setAuthor(bot.user.username, bot.user.avatarURL())
-            .setDescription(`**You've been unmuted in:** ${message.guild.name}\n**Reason**: ${reason}`)
+            .setDescription(`**You've been unmuted in:** ${message.guild.name}\n**Reason**: ${reason}\n**By:** ${message.author.username}`)
             .setTimestamp()
             .setColor(color.green);
         unmutee.send(embed)
@@ -30,7 +30,7 @@ module.exports.run = async (bot, message, args) => {
             let embed2 = new Discord.MessageEmbed()
                 .setTitle(`${unmutee} was unmuted!`)
                 .setAuthor(bot.user.username, bot.user.avatarURL())
-                .setDescription(`**Unmuted by:** ${message.author.username}\n**Reason**: ${reason}`)
+                .setDescription(`**Unmuted by:** ${message.author.username}\n**Reason**: ${reason}\n**By:** ${message.author.username}\n**Date:** ${message.createdAt.toLocaleString()}`)
                 .setTimestamp()
                 .setColor(color.green);
 
