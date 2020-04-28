@@ -13,7 +13,7 @@ module.exports = (bot) => {
 
             if (pull.help) {
                 bot.commands.set(pull.help.name, pull);
-                table.addRow(`${dir}/${file}`, '  ✅');
+                table.addRow(`${dir}/${file}`, '✅');
             } else {
                 table.addRow(file, '❌ -> missing something ?');
                 continue;
