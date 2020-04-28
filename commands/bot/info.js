@@ -1,6 +1,10 @@
 const Discord = require('discord.js');
 const package = require("../../package.json")
 const color = require("../../json/colors.json")
+var osu = require('node-os-utils');
+var cpu = osu.cpu
+
+var count = cpu.count()
 
 
 module.exports.run = async (bot, message, args) => {
@@ -13,6 +17,7 @@ module.exports.run = async (bot, message, args) => {
         .addField("📦 Node", `Version: ${process.version}`)
         .addField("📚 Library", `Discord.js: v${package.dependencies["discord.js"].substr(1)}`)
         .addField("💽 Memory", `${process.memoryUsage().heapUsed} / ${process.memoryUsage().heapTotal}`)
+        .addField("📀 CPU Usage", ` ${cpu.usage()}`)
         .setFooter("tk!help for commands!", bot.user.avatarURL())
         .setColor(color.blueviolet)
         .setThumbnail(bot.user.avatarURL())
