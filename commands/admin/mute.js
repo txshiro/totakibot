@@ -53,8 +53,6 @@ module.exports.run = async (bot, message, args) => {
         mutechannel.send(embed2)
 
 
-        let mutechannel = message.guild.channels.cache.find(ch => ch.name === "mod-logs")
-        if (!mutechannel) return message.reply(`Person was succesfully muted for ${time}. Please create a channel named 'mod-logs' If you want to send a log.`)
         setTimeout(function () {
             mutee.roles.remove(muterole.id).then(() => {
 
@@ -67,7 +65,6 @@ module.exports.run = async (bot, message, args) => {
                     .setColor(color.green);
                 mutee.send(embed4)
 
-                let mutechannel = message.guild.channels.cache.find(ch => ch.name === "mod-logs")
                 let embed3 = new Discord.MessageEmbed()
                     .setTitle(`${mutee.user.tag} was unmuted!`)
                     .setThumbnail(mutee.user.avatarURL())
