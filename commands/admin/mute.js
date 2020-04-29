@@ -12,10 +12,11 @@ module.exports.run = async (bot, message, args) => {
     if (mutee.id === message.author.id) return message.reply("You can't mute yourself.")
     if (mutee.id === "694857173595062354") return message.reply("I can't be muted by mere human.");
 
-    let time = args[1]
+    let time = args[2]
 
     let reason = args.slice(1).join(" ");
     if (!reason) reason = "No reason given."
+    if (!reason) time = args[1]
 
     let muterole = message.guild.roles.cache.find(r => r.name === "Muted");
     if (!muterole) return message.channel.send("You need to create `Muted` role first.")
