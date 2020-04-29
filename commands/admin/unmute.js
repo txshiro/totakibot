@@ -23,7 +23,7 @@ module.exports.run = async (bot, message, args) => {
             .setDescription(`**You've been unmuted in:** ${message.guild.name}\n**Reason**: ${reason}\n**By:** ${message.author.tag}\n**Date:** ${message.createdAt.toLocaleString()}`)
             .setTimestamp()
             .setThumbnail(unmutee.user.avatarURL())
-            .setColor(color.lightgreen);
+            .setColor(color.green);
         unmutee.send(embed)
         let mutechannel = message.guild.channels.cache.find(ch => ch.name === "mod-logs")
         if (!mutechannel) return message.reply("Person was succesfully unmuted. Please create a channel named `mod-logs` If you want to send a log.")
@@ -34,7 +34,7 @@ module.exports.run = async (bot, message, args) => {
             .setDescription(`** Unmuted by:** ${message.author.tag}\n ** Reason **: ${reason}\n ** By:** ${message.author.username}\n ** Date:** ${message.createdAt.toLocaleString()}`)
             .setTimestamp()
             .setThumbnail(unmutee.user.avatarURL())
-            .setColor(color.lightgreen);
+            .setColor(color.green);
 
         mutechannel.send(embed2)
     })

@@ -61,7 +61,7 @@ module.exports.run = async (bot, message, args) => {
                         .setThumbnail(mutee.user.avatarURL())
                         .setDescription(`** You've been unmuted in:** ${message.guild.name}\n**Reason:** ${reason}\n**For:** ${time}\n**By:** ${message.author.tag}\n**Date:** ${message.createdAt.toLocaleString()}`)
                         .setTimestamp()
-                        .setColor(color.red);
+                        .setColor(color.green);
                     mutee.send(embed4)
 
                     let mutechannel = message.guild.channels.cache.find(ch => ch.name === "mod-logs")
@@ -71,7 +71,7 @@ module.exports.run = async (bot, message, args) => {
                         .setAuthor(bot.user.username, bot.user.avatarURL())
                         .setDescription(`** Muted by:** ${message.author.tag}\n ** Reason **: ${reason}\n ** Date:** ${message.createdAt.toLocaleString()}`)
                         .setTimestamp()
-                        .setColor(color.red);
+                        .setColor(color.green);
                     mutechannel.send(embed3);
                 })
             }, ms(time));
