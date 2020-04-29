@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 
 
-const { prefix, token } = require("./json/config.json");
+const { prefix } = require("./json/config.json");
 const ms = require('ms');
 const bot = new Discord.Client();
 
@@ -63,9 +63,6 @@ bot.on('message', message => {
     cmd = args.shift().toLowerCase();
     let command;
     let commandfile = bot.commands.get(cmd.slice(prefix.length));
-
-    const guildID = message.guild.id;
-    module.exports = { exportGuildID: guildID };
 
     if (commandfile) commandfile.run(bot, message, args);
 
