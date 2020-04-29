@@ -12,13 +12,10 @@ module.exports.run = async (bot, message, args) => {
     if (mutee.id === message.author.id) return message.reply("You can't mute yourself.")
     if (mutee.id === "694857173595062354") return message.reply("I can't be muted by mere human.");
 
-    let time = args[2]
+    let time = args[1]
 
-    let reason = args.slice(1).join(" ");
-    if (!reason) {
-        reason.
-            time = args[1]
-    }
+    let reason = args.slice(2).join(" ");
+    if (!reason) reason = "None"
 
 
     let muterole = message.guild.roles.cache.find(r => r.name === "Muted");
@@ -55,7 +52,6 @@ module.exports.run = async (bot, message, args) => {
 
         setTimeout(function () {
             mutee.roles.remove(muterole.id).then(() => {
-
                 let embed4 = new Discord.MessageEmbed()
                     .setTitle("You've been automatically unmuted")
                     .setAuthor(bot.user.username, bot.user.avatarURL())
