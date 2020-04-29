@@ -15,8 +15,11 @@ module.exports.run = async (bot, message, args) => {
     let time = args[2]
 
     let reason = args.slice(1).join(" ");
-    if (!reason) reason = "No reason given."
-    if (!reason) time = args[1]
+    if (!reason) {
+        reason = "No reason given.";
+        time = args[1]
+    }
+
 
     let muterole = message.guild.roles.cache.find(r => r.name === "Muted");
     if (!muterole) return message.channel.send("You need to create `Muted` role first.")
