@@ -34,18 +34,17 @@ module.exports.run = async (bot, message, args) => {
         .setTimestamp()
         .setColor(color.lightgreen);
     bannedMember.send(embed)
-    if (message.guild.id === "703661705997189200") {
-        let mutechannel = message.guild.channels.cache.find(ch => ch.name === "mutes")
+    let mutechannel = message.guild.channels.cache.find(ch => ch.name === "mod-logs")
+    if (!mutechannel) return message.reply("Please create a channel named `mod-logs` If you want to send a log.")
 
-        let embed2 = new Discord.MessageEmbed()
-            .setTitle(`${bannedMember.tag} has been unbanned!`)
-            .setAuthor(bot.user.username, bot.user.avatarURL())
-            .setDescription(`**Unbanned by:** ${message.author.tag}\n ** Reason **: ${reason}\n ** By:** ${message.author.username}\n ** Date:** ${message.createdAt.toLocaleString()}`)
-            .setTimestamp()
-            .setColor(color.lightgreen);
+    let embed2 = new Discord.MessageEmbed()
+        .setTitle(`${bannedMember.tag} has been unbanned!`)
+        .setAuthor(bot.user.username, bot.user.avatarURL())
+        .setDescription(`**Unbanned by:** ${message.author.tag}\n ** Reason **: ${reason}\n ** By:** ${message.author.username}\n ** Date:** ${message.createdAt.toLocaleString()}`)
+        .setTimestamp()
+        .setColor(color.lightgreen);
 
-        mutechannel.send(embed2)
-    }
+    mutechannel.send(embed2)
 }
 module.exports.help = {
     name: 'unban',

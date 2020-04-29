@@ -32,22 +32,20 @@ module.exports.run = async (bot, message, args) => {
             .setDescription(`**You've been muted in:** ${message.guild.name}\n**Reason:** ${reason}\n**For:** Not specified\n**By:** ${message.author.tag}\n**Date:** ${message.createdAt.toLocaleString()}`)
             .setTimestamp()
             .setColor(color.red);
-        mutee.send(embed)
-        if (message.guild.id === "703661705997189200") {
-            let mutechannel = message.guild.channels.cache.find(ch => ch.name === "mods-log")
+        mutee.send(embed);
+        let mutechannel = message.guild.channels.cache.find(ch => ch.name === "mods-log")
+        if (!mutechannel) return message.reply("Please create a channel named `mod-logs` If you want to send a log.")
 
-            let embed2 = new Discord.MessageEmbed()
-                .setTitle(`${mutee.user.tag} was muted!`)
-                .setThumbnail(mutee.user.avatarURL())
-                .setAuthor(bot.user.username, bot.user.avatarURL())
-                .setDescription(`** Muted by:** ${message.author.tag}\n**For:** ${time}\n** Reason **: ${reason}\n ** Date:** ${message.createdAt.toLocaleString()}`)
-                .setTimestamp()
-                .setColor(color.red);
 
-            mutechannel.send(embed2)
-        } else {
-            console.log("yes")
-        }
+        let embed2 = new Discord.MessageEmbed()
+            .setTitle(`${mutee.user.tag} was muted!`)
+            .setThumbnail(mutee.user.avatarURL())
+            .setAuthor(bot.user.username, bot.user.avatarURL())
+            .setDescription(`** Muted by:** ${message.author.tag}\n**For:** ${time}\n** Reason **: ${reason}\n ** Date:** ${message.createdAt.toLocaleString()}`)
+            .setTimestamp()
+            .setColor(color.red);
+
+        mutechannel.send(embed2)
 
         setTimeout(function () {
             mutee.roles.remove(muterole.id);

@@ -23,7 +23,9 @@ module.exports.run = async (bot, message, args) => {
     kickMember.send(embed).then(() => kickMember.kick()).catch(err => console.log(err))
 
     if (message.guild.id === "703661705997189200") {
-        let mutechannel = message.guild.channels.cache.find(ch => ch.name === "mutes")
+        let mutechannel = message.guild.channels.cache.find(ch => ch.name === "mod-logs")
+        if (!mutechannel) return message.reply("Please create a channel named `mod-logs` If you want to send a log.")
+
 
         let embed2 = new Discord.MessageEmbed()
             .setTitle(`${kickMember.user.tag} was kicked!`)
