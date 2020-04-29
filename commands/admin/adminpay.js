@@ -90,7 +90,7 @@ module.exports.run = async (bot, message, args) => {
                 .setThumbnail(bot.users.cache.get(user.id).avatarURL())
                 .addField("For", bot.users.cache.get(user.id).username, true)
                 .addField(`New Balance`, `**${grabUserData.toLocaleString()}**`, true)
-                .setFooter(`${prefixes[message.guild.id].prefix}help for commands`);
+                .setFooter(`tk!help for commands`);
             return message.channel.send(embed);
         }
     })
