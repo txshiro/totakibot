@@ -14,7 +14,8 @@ module.exports.run = async (bot, message, args) => {
 
     let time = args[1]
     if (!time) return message.reply("Please specify a time.")
-    if (time != Math.floor(time) && !time.endsWith("s") && !time.endsWith("h") && !time.endsWith("m") && !time.endsWith("d")) return message.reply("You can only use numbers")
+    if (!time.endsWith("s") && !time.endsWith("h") && !time.endsWith("m") && !time.endsWith("d")) return message.reply("You can only use `d`, `h`, `m` `s`"))
+
 
     let reason = args.slice(2).join(" ");
     if (!reason) reason = "None"
