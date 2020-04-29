@@ -34,7 +34,8 @@ module.exports.run = async (bot, message, args) => {
             .setTimestamp()
             .setColor(color.red);
         mutee.send(embed);
-        let mutechannel = message.guild.channels.cache.find(ch => ch.name === "mods-log")
+
+        let mutechannel = message.guild.channels.cache.find(ch => ch.name === "mod-logs")
         if (!mutechannel) return message.reply("Person was succesfully muted. Please create a channel named `mod-logs` If you want to send a log.")
 
 
@@ -48,6 +49,9 @@ module.exports.run = async (bot, message, args) => {
 
         mutechannel.send(embed2)
 
+        if (time) {
+
+        }
         setTimeout(function () {
             mutee.roles.remove(muterole.id);
 
