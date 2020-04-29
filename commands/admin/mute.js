@@ -12,23 +12,10 @@ module.exports.run = async (bot, message, args) => {
     if (mutee.id === message.author.id) return message.reply("You can't mute yourself.")
     if (mutee.id === "694857173595062354") return message.reply("I can't be muted by mere human.");
 
-    var charCodeZero = "0".charCodeAt(0);
-    var charCodeNine = "9".charCodeAt(0);
-
-    function isDigitCode(n) {
-        return (n >= charCodeZero && n <= charCodeNine);
-    }
-
     let time = args[1]
     if (!time) return message.reply("Please specify a time.")
     if (time.startsWith(isDigitCode) && !time.endsWith("s") && !time.endsWith("h") && !time.endsWith("m") && !time.endsWith("d")) return message.reply("You can only use `s`, `m`, `h` or `d`");
 
-    try {
-        time != Math.floor(args[1])
-        console.log("ok")
-    } catch (err) {
-        console.log(err)
-    }
 
     let reason = args.slice(2).join(" ");
     if (!reason) reason = "None"
@@ -58,11 +45,14 @@ module.exports.run = async (bot, message, args) => {
             .setTitle(`${mutee.user.tag} was muted!`)
             .setThumbnail(mutee.user.avatarURL())
             .setAuthor(bot.user.username, bot.user.avatarURL())
-            .setDescription(`** Muted by:** ${message.author.tag}\n**For:** ${time}\n** Reason **: ${reason}\n ** Date:** ${embed2.createdAt.toLocaleString()}`)
+            .setDescription(`** Muted by:** ${message.author.tag}\n**For:** ${time}\n** Reason **: ${reason}\n ** Date:** ${message.createdAt.toLocaleString()}`)
             .setTimestamp()
             .setColor(color.red);
 
-        mutechannel.send(embed2)
+        mutechannel.send(embed2).then((m) => {
+            embed2.setDescription(`** Muted by:** ${message.author.tag}\n**For:** ${time}\n** Reason **: ${reason}\n ** Date:** ${m.createdAt.toLocaleString()}`)
+            m.edit()
+        })
 
 
         setTimeout(function () {
