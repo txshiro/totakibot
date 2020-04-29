@@ -14,7 +14,7 @@ module.exports.run = async (bot, message, args) => {
 
     let time = args[1]
     if (!time) return message.reply("Please specify a time.")
-    if (!time.endsWith("s", "d", "m")) return console.log("ok")
+    if (!time.endsWith("s") && !time.endsWith("d") && !time.endsWith("m")) return console.log("ok")
 
     let reason = args.slice(2).join(" ");
     if (!reason) reason = "None"
