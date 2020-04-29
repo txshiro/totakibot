@@ -34,7 +34,7 @@ module.exports.run = async (bot, message, args) => {
             .setColor(color.red);
         mutee.send(embed)
         if (message.guild.id === "703661705997189200") {
-            let mutechannel = message.guild.channels.cache.find(ch => ch.name === "mutes")
+            let mutechannel = message.guild.channels.cache.find(ch => ch.name === "mods-log")
 
             let embed2 = new Discord.MessageEmbed()
                 .setTitle(`${mutee.user.tag} was muted!`)
@@ -61,6 +61,7 @@ module.exports.run = async (bot, message, args) => {
                 .setColor(color.red);
             mutee.send(embed4)
 
+            let mutechannel = message.guild.channels.cache.find(ch => ch.name === "mods-log")
             let embed3 = new Discord.MessageEmbed()
                 .setTitle(`${mutee.user.tag} was unmuted!`)
                 .setThumbnail(mutee.user.avatarURL())

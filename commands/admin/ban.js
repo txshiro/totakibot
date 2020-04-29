@@ -38,19 +38,20 @@ module.exports.run = async (bot, message, args) => {
         .setThumbnail(banMember.user.avatarURL())
         .setColor(color.darkred);
     banMember.send(embed)
-    if (message.guild.id === "703661705997189200") {
-        let mutechannel = message.guild.channels.cache.find(ch => ch.name === "mutes")
+    let mutechannel = message.guild.channels.cache.find(ch => ch.name === "mods-log")
+    if (!mutechannel) return message.reply("Please create a channel named `mod-logs` If you want to send a log.")
 
-        let embed2 = new Discord.MessageEmbed()
-            .setTitle(`${banMember.user.tag} has been banned!`)
-            .setAuthor(bot.user.username, bot.user.avatarURL())
-            .setDescription(`** Banned by:** ${message.author.tag}\n ** Reason **: ${reason}\n**For:** ${tempb} ${typeb}\n ** By:** ${message.author.username}\n ** Date:** ${message.createdAt.toLocaleString()}`)
-            .setTimestamp()
-            .setThumbnail(banMember.user.avatarURL())
-            .setColor(color.lightgreen);
 
-        mutechannel.send(embed2)
-    }
+    let embed2 = new Discord.MessageEmbed()
+        .setTitle(`${banMember.user.tag} has been banned!`)
+        .setAuthor(bot.user.username, bot.user.avatarURL())
+        .setDescription(`** Banned by:** ${message.author.tag}\n ** Reason **: ${reason}\n**For:** ${tempb} ${typeb}\n ** By:** ${message.author.username}\n ** Date:** ${message.createdAt.toLocaleString()}`)
+        .setTimestamp()
+        .setThumbnail(banMember.user.avatarURL())
+        .setColor(color.lightgreen);
+
+    mutechannel.send(embed2)
+
 }
 module.exports.help = {
     name: 'ban',
