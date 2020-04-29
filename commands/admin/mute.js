@@ -17,6 +17,7 @@ module.exports.run = async (bot, message, args) => {
     let reason = args.slice(1).join(" ");
     if (!reason) {
         reason = "No reason given.";
+        reason = args.slice(0).join(" ");
         time = args[1]
     }
 
