@@ -20,7 +20,7 @@ const Data = require("../../models/data.js");
 module.exports.run = async (bot, message, args) => {
 
     //creating variables
-    var thumbnail = "https://freesvg.org/img/slot-machine.png"
+    var thumbnail = "https://www.svgrepo.com/show/57356/gambling-coins-machine-with-winner-result-of-three-seven.svg"
     let name = message.author.username;
     let icon = message.author.avatarURL();
 

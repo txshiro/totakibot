@@ -35,7 +35,7 @@ module.exports.run = async (bot, message, args) => {
         .setColor(color.lightgreen);
     bannedMember.send(embed)
     let mutechannel = message.guild.channels.cache.find(ch => ch.name === "mod-logs")
-    if (!mutechannel) return message.reply("Please create a channel named `mod-logs` If you want to send a log.")
+    if (!mutechannel) return message.reply("Person was succesfully unbanned. Please create a channel named `mod-logs` If you want to send a log.")
 
     let embed2 = new Discord.MessageEmbed()
         .setTitle(`${bannedMember.tag} has been unbanned!`)

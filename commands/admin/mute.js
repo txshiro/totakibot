@@ -34,7 +34,7 @@ module.exports.run = async (bot, message, args) => {
             .setColor(color.red);
         mutee.send(embed);
         let mutechannel = message.guild.channels.cache.find(ch => ch.name === "mods-log")
-        if (!mutechannel) return message.reply("Please create a channel named `mod-logs` If you want to send a log.")
+        if (!mutechannel) return message.reply("Person was succesfully muted. Please create a channel named `mod-logs` If you want to send a log.")
 
 
         let embed2 = new Discord.MessageEmbed()

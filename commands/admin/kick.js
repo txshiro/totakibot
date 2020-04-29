@@ -24,7 +24,7 @@ module.exports.run = async (bot, message, args) => {
 
     if (message.guild.id === "703661705997189200") {
         let mutechannel = message.guild.channels.cache.find(ch => ch.name === "mod-logs")
-        if (!mutechannel) return message.reply("Please create a channel named `mod-logs` If you want to send a log.")
+        if (!mutechannel) return message.reply("Person was succesfully kicked. Please create a channel named `mod-logs` If you want to send a log.")
 
 
         let embed2 = new Discord.MessageEmbed()

@@ -18,7 +18,7 @@ const Data = require("../../models/data.js");
 
 module.exports.run = async (bot, message, args) => {
 
-    var thumbnail = "https://lh3.googleusercontent.com/proxy/Ccd_EYQps2xPskQpqCb-3vWTOzlArU0rnBSYpooNJk2RaJZ2IPIBcXuygupebCKIxr135XpNTrmk3zlz96W9L84lsUdZyM6D8d7qKwv7uKN7Cvca-p0UKFtXXniYoiSfRQ"
+    var thumbnail = "https://static1.squarespace.com/static/5db62e34e4d7794c5fe4dde4/t/5df443639eff7e06e60d94bf/1578867508633/?format=1500w"
 
     if (message.mentions.members.first()) return message.reply("You can't tag anyone when using this command");
 
