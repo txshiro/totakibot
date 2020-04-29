@@ -48,16 +48,7 @@ module.exports.run = async (bot, message, args) => {
             .setDescription(`** Muted by:** ${message.author.tag}\n**For:** ${time}\n** Reason **: ${reason}\n ** Date:** ${message.createdAt.toLocaleString()}`)
             .setTimestamp()
             .setColor(color.red);
-
-        mutechannel.send(embed2).then((m) => {
-            embed2.setTitle(`${mutee.user.tag} was muted!`)
-            embed2.setThumbnail(mutee.user.avatarURL())
-            embed2.setAuthor(bot.user.username, bot.user.avatarURL())
-            embed2.setTimestamp()
-            embed2.setColor(color.red);
-            embed2.setDescription(`** Muted by:** ${message.author.tag}\n**For:** ${time}\n** Reason **: ${reason}\n ** Date:** ${m.createdAt.toLocaleString()}`)
-            m.edit(embed2)
-        })
+        mutechannel.send(embed2);
 
 
         setTimeout(function () {
