@@ -23,7 +23,7 @@ module.exports.run = async (bot, message, args) => {
 
     if (mutee.roles.cache.find(r => r.name === "Muted")) return message.channel.send("That person is already muted")
 
-    if (!time) time = "Not specified"
+    if (!time) return message.reply("Please specify a time.")
 
     mutee.roles.add(muterole.id).then(() => {
         let embed = new Discord.MessageEmbed()
@@ -50,6 +50,8 @@ module.exports.run = async (bot, message, args) => {
         mutechannel.send(embed2)
 
         if (time) {
+            let mutechannel = message.guild.channels.cache.find(ch => ch.name === "mod-logs")
+            if (!mutechannel) return message.reply(`Person was succesfully muted for ${time}. Please create a channel named 'mod-logs' If you want to send a log.`)
             setTimeout(function () {
                 mutee.roles.remove(muterole.id);
 
@@ -57,7 +59,7 @@ module.exports.run = async (bot, message, args) => {
                     .setTitle("You've been automatically unmuted")
                     .setAuthor(bot.user.username, bot.user.avatarURL())
                     .setThumbnail(mutee.user.avatarURL())
-                    .setDescription(`**You've been unmuted in:** ${message.guild.name}\n**Reason:** ${reason}\n**For:** ${time}\n**By:** ${message.author.tag}\n**Date:** ${message.createdAt.toLocaleString()}`)
+                    .setDescription(`** You've been unmuted in:** ${message.guild.name}\n**Reason:** ${reason}\n**For:** ${time}\n**By:** ${message.author.tag}\n**Date:** ${message.createdAt.toLocaleString()}`)
                     .setTimestamp()
                     .setColor(color.red);
                 mutee.send(embed4)
