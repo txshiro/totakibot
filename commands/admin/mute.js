@@ -24,7 +24,7 @@ module.exports.run = async (bot, message, args) => {
     if (time.startsWith(isDigitCode) && !time.endsWith("s") && !time.endsWith("h") && !time.endsWith("m") && !time.endsWith("d")) return message.reply("You can only use `s`, `m`, `h` or `d`");
 
     try {
-        time = Math.floor(args[1])
+        time != Math.floor(args[1])
     } catch (err) {
         console.log(err)
     }
