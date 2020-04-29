@@ -25,6 +25,7 @@ module.exports.run = async (bot, message, args) => {
 
     try {
         time != Math.floor(args[1])
+        console.log("ok")
     } catch (err) {
         console.log(err)
     }
