@@ -13,6 +13,7 @@ module.exports.run = async (bot, message, args) => {
     if (mutee.id === "694857173595062354") return message.reply("I can't be muted by mere human.");
 
     let time = args[1]
+    if (!time) return message.reply("Please specify a time.")
 
     let reason = args.slice(2).join(" ");
     if (!reason) reason = "None"
@@ -23,7 +24,6 @@ module.exports.run = async (bot, message, args) => {
 
     if (mutee.roles.cache.find(r => r.name === "Muted")) return message.channel.send("That person is already muted")
 
-    if (!time) return message.reply("Please specify a time.")
 
     mutee.roles.add(muterole.id).then(() => {
         let embed = new Discord.MessageEmbed()
