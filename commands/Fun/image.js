@@ -10,12 +10,12 @@ module.exports.run = async (bot, message, args) => {
 
 
     function image(message) {
-
-        let args = message.content.slice(prefix.prefix.length).split(" ");
+        let args = message.content.slice(PREFIX.length).split(" ");
         var search = args.toString();
+        if (!search) search = 'one piece chopper'
 
         var options = {
-            url: "http://results.dogpile.com/serp?qc=images&q" + search,
+            url: "http://results.dogpile.com/serp?qc=images&q=" + search,
             method: "GET",
             headers: {
                 "Accept": "text/html",
@@ -25,22 +25,27 @@ module.exports.run = async (bot, message, args) => {
 
         request(options, function (error, response, responseBody) {
             if (error) {
-                console.log(error)
+                return;
             }
+
 
             $ = cheerio.load(responseBody);
 
+
             var links = $(".image a.link");
 
-            var urls = new Array(links.length).fill(0).map((v, i) => links.eq(1).attr("href"));
+            var urls = new Array(links.length).fill(0).map((v, i) => links.eq(i).attr("href"));
 
             console.log(urls);
+
             if (!urls.length) {
-                return console.log("no url")
+
+                return;
             }
 
-            message.channel.send(urls[Math.floor(Math.random() * url.length)]);
-        })
+            // Send result
+            message.channel.send(urls[Math.floor(Math.random() * urls.length)]);
+        });
     }
 
 }
