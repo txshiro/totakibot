@@ -10,7 +10,7 @@ module.exports.run = async (bot, message, args) => {
     function image(message) {
 
         let result = args.slice(0).join(" ");
-        if (!result) reason = "one piece"
+        if (!result) result = "one piece"
 
         var options = {
             url: "http://results.dogpile.com/serp?qc=images&q" + result,
@@ -34,7 +34,7 @@ module.exports.run = async (bot, message, args) => {
 
             console.log(urls);
             if (!urls.length) {
-                return
+                return console.log("no url")
             }
 
             message.channel.send(urls[Math.floor(Math.random() * url.length)] + " " + message.guild.member.random());
