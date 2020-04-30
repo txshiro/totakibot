@@ -21,17 +21,21 @@ module.exports.run = async (bot, message, args) => {
             EmojiCount++;
             Emojis += Emoji(emoji.id)
         }
-
-        let embed = new Discord.MessageEmbed()
-            .setAuthor(message.guild.name, message.guild.iconURL())
-            .setTitle("Emojis")
-            .addField(`<a:peepoJAM:585829015449763880> Animated ${Animated}`, EmojisAnimated)
-            .addField(`<:peepoShy:704281248855621684> Standard ${EmojiCount}`, Emojis)
-            .addField("Total emojis", OverallEmojis)
-            .setColor(colors.yellow)
-            .setTimestamp()
-            .setFooter("tk!help for commands", bot.user.avatarURL())
     })
+
+
+    let embed = new Discord.MessageEmbed()
+        .setAuthor(message.guild.name, message.guild.iconURL())
+        .setTitle("Emojis")
+        .addField(`<a:peepoJAM:585829015449763880> Animated ${Animated}`, EmojisAnimated)
+        .addField(`<:peepoShy:704281248855621684> Standard ${EmojiCount}`, Emojis)
+        .addField("Total emojis", OverallEmojis)
+        .setColor(colors.yellow)
+        .setTimestamp()
+        .setFooter("tk!help for commands", bot.user.avatarURL());
+    message.channel.send(embed);
+
+
 }
 
 module.exports.help = {
