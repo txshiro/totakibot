@@ -10,7 +10,7 @@ module.exports.run = async (bot, message, args) => {
 
 
     function image(message) {
-        let args = message.content.slice(PREFIX.length).split(" ");
+        let args = message.content.slice(prefix.prefix.length).split(" ");
         var search = args.toString();
         if (!search) search = 'one piece chopper'
 
