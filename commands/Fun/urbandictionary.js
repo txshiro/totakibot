@@ -6,7 +6,7 @@ const urban = require('relevant-urban');
 
 module.exports.run = async (bot, message, args) => {
 
-    let embed = new Discord.MessageEmbed
+    let embed = new Discord.MessageEmbed();
     if (!args[0]) {
         embed.setDescription("You need to write word/text");
         embed.setColor(colors.darkred);
