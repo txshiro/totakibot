@@ -1,5 +1,7 @@
 const cheerio = require('cheerio');
 
+const prefix = require('../../json/config.json')
+
 const request = require('request');
 
 module.exports.run = async (bot, message, args) => {
@@ -9,11 +11,11 @@ module.exports.run = async (bot, message, args) => {
 
     function image(message) {
 
-        let result = args.slice(0).join(" ");
-        if (!result) result = "one piece"
+        let args = message.content.slice(prefix.prefix.length).split(" ");
+        var search = args.toString();
 
         var options = {
-            url: "http://results.dogpile.com/serp?qc=images&q" + result,
+            url: "http://results.dogpile.com/serp?qc=images&q" + search,
             method: "GET",
             headers: {
                 "Accept": "text/html",
@@ -37,7 +39,7 @@ module.exports.run = async (bot, message, args) => {
                 return console.log("no url")
             }
 
-            message.channel.send(urls[Math.floor(Math.random() * url.length)] + " " + message.guild.member.random());
+            message.channel.send(urls[Math.floor(Math.random() * url.length)]);
         })
     }
 
