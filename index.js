@@ -1,23 +1,9 @@
 const Discord = require('discord.js');
-
-
 const { prefix } = require("./json/config.json");
-const ms = require('ms');
 const bot = new Discord.Client();
-
-const DBL = require('dblapi.js');
-const dbl = new DBL('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NDg1NzE3MzU5NTA2MjM1NCIsImJvdCI6dHJ1ZSwiaWF0IjoxNTg4MDc2NjI2fQ.bwx8evJflf5clAh4fKiyGZZIoc2PqxcxnInb6UXUhU8', { webhookPort: 5000, webhookAuth: 'password' });
-
 
 bot.commands = new Discord.Collection();
 bot.aliases = new Discord.Collection();
-
-dbl.webhook.on('ready', hook => {
-    console.log(`Webhook running at http://${hook.hostname}:${hook.port}${hook.path}`);
-});
-dbl.webhook.on('vote', vote => {
-    console.log(`User with ID ${vote.user} just voted!`);
-});
 
 ["command"].forEach(handler => {
     require(`./handler/${handler}`)(bot);

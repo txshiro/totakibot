@@ -24,7 +24,7 @@ module.exports.run = async (bot, message, args) => {
             .addField("📦 Node", `Version: ${process.version}`)
             .addField("📚 Library", `Discord.js: v${package.dependencies["discord.js"].substr(1)}`)
             .addField("💽 Memory", `${(Math.round(parseFloat(process.memoryUsage().heapUsed / 1024 / 1024)))}%`)
-            .addField("🤖 Commands Count", '29')
+            .addField("🤖 Commands Count", '30')
             .addField("🏓 Ping", `${ping}ms`)
             .addField("🕒 Uptime", duration(bot.uptime))
             .setFooter("tk!help for commands!", bot.user.avatarURL())

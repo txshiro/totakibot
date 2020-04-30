@@ -10,7 +10,7 @@ module.exports.run = async (bot, message, args) => {
 
     if (user.id === message.author.id) {
         let embed = new Discord.MessageEmbed()
-            .setAuthor(user, user.avatarURL())
+            .setAuthor(user.username, user.avatarURL())
             .setTitle("Your avatar")
             .setImage(user.avatarURL())
             .setTimestamp()
@@ -19,7 +19,7 @@ module.exports.run = async (bot, message, args) => {
 
     } else {
         let embed2 = new Discord.MessageEmbed()
-            .setAuthor(user, user.avatarURL())
+            .setAuthor(user.username, user.avatarURL())
             .setTitle(`${user}'s avatar`)
             .setImage(user.avatarURL())
             .setTimestamp()
