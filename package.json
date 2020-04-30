@@ -25,6 +25,7 @@
     "fs-readdir": "0.0.3",
     "fs-readdir-recursive": "^1.1.0",
     "heroku": "^7.39.5",
+    "jikanjs": "^0.7.0",
     "mongoose": "^5.9.9",
     "ms": "^2.1.2",
     "node-fetch": "^2.6.0",

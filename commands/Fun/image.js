@@ -12,7 +12,7 @@ module.exports.run = async (bot, message, args) => {
     function image(message) {
         let args = message.content.slice(prefix.prefix.length).split(" ");
         var search = args.toString();
-        if (!search) search = 'one piece chopper'
+        if (!search) search = 'one piece Tony Tony Chopper'
 
         var options = {
             url: "http://results.dogpile.com/serp?qc=images&q=" + search,
@@ -35,8 +35,6 @@ module.exports.run = async (bot, message, args) => {
             var links = $(".image a.link");
 
             var urls = new Array(links.length).fill(0).map((v, i) => links.eq(i).attr("href"));
-
-            console.log(urls);
 
             if (!urls.length) {
 
