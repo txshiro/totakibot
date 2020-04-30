@@ -1,5 +1,7 @@
 const Discord = require('discord.js');
 
+const color = require('../../json/colors.json')
+
 module.exports.run = async (bot, message, args) => {
 
     if (!args[0]) {
@@ -15,12 +17,14 @@ module.exports.run = async (bot, message, args) => {
             .setImage(user.avatarURL())
             .setTimestamp()
             .setFooter("tk!help for commands", bot.user.avatarURL())
+            .setColor(color.orange)
         return message.channel.send(embed);
 
     } else {
         let embed2 = new Discord.MessageEmbed()
+            .setColor(color.orange)
             .setAuthor(user.username, user.avatarURL())
-            .setTitle(`${user}'s avatar`)
+            .setTitle(`${user.username}'s avatar`)
             .setImage(user.avatarURL())
             .setTimestamp()
             .setFooter("tk!help for commands", bot.user.avatarURL())
