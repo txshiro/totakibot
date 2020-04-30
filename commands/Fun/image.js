@@ -12,7 +12,7 @@ module.exports.run = async (bot, message, args) => {
     function image(message) {
         let args = message.content.slice(prefix.prefix.length).split(" ");
         var search = args.toString();
-        if (!search) search = 'TonyTonyChopper'
+        if (!search) search = "TonyTonyChopper"
 
         var options = {
             url: "http://results.dogpile.com/serp?qc=images&q=" + search,
