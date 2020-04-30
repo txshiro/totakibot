@@ -15,7 +15,7 @@ module.exports.run = async (bot, message, args) => {
             .setImage(user.avatarURL())
             .setTimestamp()
             .setFooter("tk!help for commands", bot.user.avatarURL())
-        return message.channel.send(embed)
+        return message.channel.send(embed);
 
     } else {
         let embed2 = new Discord.MessageEmbed()
@@ -24,7 +24,7 @@ module.exports.run = async (bot, message, args) => {
             .setImage(user.avatarURL())
             .setTimestamp()
             .setFooter("tk!help for commands", bot.user.avatarURL())
-        return message.channel.send(embed2)
+        return message.channel.send(embed2);
     }
 
 
