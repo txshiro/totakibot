@@ -27,6 +27,7 @@ module.exports.run = async (bot, message, args) => {
             .addField("🤖 Commands Count", '30')
             .addField("🏓 Ping", `${ping}ms`)
             .addField("🕒 Uptime", duration(bot.uptime))
+            .addField("🎀 Support Server", "[Join here :)](https://discord.gg/9Rp6JkV)")
             .setFooter("tk!help for commands!", bot.user.avatarURL())
             .setColor(color.blueviolet)
             .setThumbnail(bot.user.avatarURL())
