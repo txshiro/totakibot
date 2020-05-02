@@ -13,6 +13,10 @@ module.exports.run = async (bot, message, args) => {
 
     const joinedAt = formatDate(user.joinedAt)
     const createdAt = formatDate(user.createdAt)
+    const roles = user.roles
+        .filter(r => r.id !== message.guild.id)
+        .map(r => r)
+        .join(", ") || "none";
 
     let uEmbed = new Discord.MessageEmbed()
         .setColor('f5f242')
@@ -25,6 +29,7 @@ module.exports.run = async (bot, message, args) => {
         .addField("**Status:**", `${user.presence.status}`)
         .addField("**Created at:**", `${createdAt}`)
         .addField("**Joined at:**", joinedAt)
+        .addField("Roles", roles)
         .setFooter(bot.user.username, bot.user.avatarURL())
         .setTimestamp()
 
