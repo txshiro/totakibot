@@ -7,6 +7,10 @@ module.exports.run = async (bot, message, args) => {
         var user = message.mentions.users.first() || bot.users.cache.get(args[0])
     }
 
+    function formatDate(date) {
+        return new Intl.DateTimeFormat('sk-EU').format(date)
+    }
+
     const joinedAt = formatDate(user.member.joinedAt)
     const createdAt = formatDate(user.createdAt)
 
