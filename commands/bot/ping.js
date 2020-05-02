@@ -7,7 +7,7 @@ module.exports.run = async (bot, message, args) => {
         let ping = m.createdTimestamp - message.createdTimestamp
 
         let embed = new Discord.MessageEmbed()
-            .setTitle("🏓Pong!")
+            .setTitle("🏓 Pong!")
             .addField("🤖 System Latency", `${ping}ms`)
             .addField("⚙️ API Latency", `${Math.round(bot.ws.ping)}ms`)
             .setColor(color.lightyellow)
