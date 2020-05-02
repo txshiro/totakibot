@@ -13,10 +13,7 @@ module.exports.run = async (bot, message, args) => {
 
     const joinedAt = formatDate(user.joinedAt)
     const createdAt = formatDate(user.createdAt)
-    const role = user.roles
-        .filter(r => r.id !== message.guild.id)
-        .map(r => r)
-        .join(", ") || "none";
+    const role = user.roles.filter(r => r.id !== message.guild.id).map(r => r).join(", ") || "none";
 
     let uEmbed = new Discord.MessageEmbed()
         .setColor('f5f242')
