@@ -23,10 +23,10 @@ module.exports.run = async (bot, message, args) => {
         let embed = new Discord.MessageEmbed();
         embed.setTitle("Totaki's commands")
         embed.setDescription("**tk!help <command name>** for more info on certain command!")
-        embed.addField("1. Fun", "`8ball` `iq` `pp` `morecko` `hit` `hug` `pat` `wave` `userinfo` `image`    `avatar` `urbandictionary`")
-        embed.addField("2. Gamble", "`balance` `coinflip` `daily` `gamble` `leaderboards` `pay` `slots`")
-        embed.addField("3. Admin", "`adminpayall` `adminpay` `clear` `mute` `unmute` `kick` `ban` `permaban` `unban`")
-        embed.addField("4. Bot", "`ping` `uptime` `help` `info`")
+        embed.addField("🤪 Fun", "`8ball` `iq` `pp` `morecko` `hit` `hug` `pat` `wave` `userinfo` `image`    `avatar` `urbandictionary`")
+        embed.addField("🎰 Gamble", "`balance` `coinflip` `daily` `gamble` `leaderboards` `pay` `slots`")
+        embed.addField("🛡️ Moderation", "`adminpayall` `adminpay` `clear` `mute` `unmute` `kick` `ban` `permaban` `unban`")
+        embed.addField("🤖 Bot", "`ping` `uptime` `help` `info`")
         embed.setColor(colors.blanchedalmond)
         embed.setFooter("Thanks for using this bot!", bot.user.avatarURL())
         embed.setTimestamp();

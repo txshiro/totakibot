@@ -1,9 +1,18 @@
 const Discord = require('discord.js');
+const color = require('../../json/colors.json')
 
 module.exports.run = async (bot, message, args) => {
 
-    message.channel.send("Pong").then(m => {
+    message.channel.send("Getting latency...").then(m => {
         let ping = m.createdTimestamp - message.createdTimestamp
+
+        let embed = new Discord.MessageEmbed()
+            .setTitle("🏓Pong!")
+            .addField("🤖 System Latency", `${ping}ms`)
+            .addField("⚙️ API Latency", `${Math.round(bot.ping)}ms`)
+            .setColor(color.lightyellow)
+            .setTimestamp()
+            .setFooter("tk!help for commands!", bot.user.avatarURL())
 
         m.edit(`My system is ${ping}ms slow.`)
     })
