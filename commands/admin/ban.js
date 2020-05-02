@@ -3,7 +3,7 @@ const color = require('../../json/colors.json')
 
 module.exports.run = async (bot, message, args) => {
 
-    if (!message.member.hasPermission(["BAN_MEMBERS"])) return message.reply("You don't have enough permissions!");
+    if (!message.member.hasPermission(["BAN_MEMBERS"])) return message.reply("You are missing this permission : `BAN_MEMBERS`");
 
     let banMember = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
     if (!banMember) return message.reply("You need to specify a user!")

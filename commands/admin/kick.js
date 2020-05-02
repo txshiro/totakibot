@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const color = require('../../json/colors.json');
 
 module.exports.run = async (bot, message, args) => {
-    if (!message.member.hasPermission("KICK_MEMBERS")) return message.reply("You don't have enough permissions!");
+    if (!message.member.hasPermission("KICK_MEMBERS")) return message.reply("You are missing this permission: `KICK_MEMBERS`");
 
     let kickMember = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
     if (!kickMember) return message.reply("You need to specify a user!");

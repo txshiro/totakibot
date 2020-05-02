@@ -15,7 +15,7 @@ module.exports.run = async (bot, message, args) => {
 
 
     let user = message.mentions.users.first() || bot.users.cache.get(args[0])
-    if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply(`You don't have enough permissions`);
+    if (!message.member.hasPermission("ADMINISTRATOR")) return message.reply(`You are missing this permission: 'ADMINISTRATOR'`);
     if (!user) return message.reply("I can't find that user");
     if (user.id === "694857173595062354") return message.reply("You can't use this command on bot!");
     if (!args[1]) return message.reply("You need to write add/remove")

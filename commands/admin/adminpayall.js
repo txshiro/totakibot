@@ -12,7 +12,7 @@ const Data = require("../../models/data.js");
 
 module.exports.run = async (bot, message, args) => {
 
-    if (!message.member.hasPermission("ADMINISTRATOR")) return message.reply(`You don't have enough permissions`);
+    if (!message.member.hasPermission("ADMINISTRATOR")) return message.reply(`You are missing this permission: 'ADMINISTRATOR'`);
     if (!args[1]) return message.reply("You need to write a number");
     if (args[1] != Math.floor(args[1])) return message.reply("Please add only whole numbers");
     if (!args[0]) return message.reply("Pleae write add/remove")

@@ -5,7 +5,7 @@ const ms = require('ms');
 
 module.exports.run = async (bot, message, args) => {
 
-    if (!message.member.hasPermission(["MANAGE_ROLES", "MUTE_MEMBERS"])) return message.reply("You don't have enough permissions!");
+    if (!message.member.hasPermission(["MANAGE_ROLES", "MUTE_MEMBERS"])) return message.reply("You are missing these permission: `MANAGE_ROLES`, `MUTE_MEMBERS`");
 
     let mutee = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
     if (!mutee) return message.reply("You need to specify a user!")

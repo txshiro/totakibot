@@ -3,7 +3,7 @@ const color = require('../../json/colors.json')
 
 module.exports.run = async (bot, message, args) => {
 
-    if (!message.member.hasPermission(["BAN_MEMBERS"])) return message.reply("You don't have enough permissions!");
+    if (!message.member.hasPermission(["BAN_MEMBERS"])) return message.reply("You are missing this permission: 'BAN_MEMBERS'");
 
     if (isNaN(args[0])) return message.channel.send("You need to provide an ID.")
     let bannedMember = await bot.users.fetch(args[0])

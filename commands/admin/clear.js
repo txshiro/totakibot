@@ -1,7 +1,7 @@
 module.exports.run = async (bot, message, args) => {
 
     //Checking if user has enough permission
-    if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply(`You don't have enough permissions to use this command.`);
+    if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("You are missing this permission: `MANAGE_MESSAGES`");
 
     //checking if number
     if (typeof args[0] != "number" && args[0] != parseInt(args[0])) return message.reply("Please use only numbers")
