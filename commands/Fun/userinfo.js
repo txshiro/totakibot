@@ -13,7 +13,7 @@ module.exports.run = async (bot, message, args) => {
 
     const joinedAt = formatDate(user.joinedAt)
     const createdAt = formatDate(user.createdAt)
-    const roles = user.roles
+    const role = user.roles
         .filter(r => r.id !== message.guild.id)
         .map(r => r)
         .join(", ") || "none";
@@ -29,7 +29,7 @@ module.exports.run = async (bot, message, args) => {
         .addField("**Status:**", `${user.presence.status}`)
         .addField("**Created at:**", `${createdAt}`)
         .addField("**Joined at:**", joinedAt)
-        .addField("Roles", roles)
+        .addField("Roles", role)
         .setFooter(bot.user.username, bot.user.avatarURL())
         .setTimestamp()
 
