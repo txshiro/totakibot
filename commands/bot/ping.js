@@ -3,7 +3,7 @@ const color = require('../../json/colors.json')
 
 module.exports.run = async (bot, message, args) => {
 
-    message.channel.send("Getting latency...").then(m => {
+    message.channel.send("Getting latencies...").then(m => {
         let ping = m.createdTimestamp - message.createdTimestamp
 
         let embed = new Discord.MessageEmbed()
@@ -14,7 +14,7 @@ module.exports.run = async (bot, message, args) => {
             .setTimestamp()
             .setFooter("tk!help for commands!", bot.user.avatarURL())
 
-        m.edit(`My system is ${ping}ms slow.`)
+        m.edit(embed)
     })
 }
 
