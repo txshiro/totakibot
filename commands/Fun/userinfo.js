@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, args) => {
         return new Intl.DateTimeFormat('sk-EU').format(date)
     }
 
-    const joinedAt = formatDate(user.member.joinedAt)
+    const joinedAt = formatDate(user.joinedAt)
     const createdAt = formatDate(user.createdAt)
 
     let uEmbed = new Discord.MessageEmbed()
