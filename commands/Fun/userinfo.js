@@ -7,18 +7,25 @@ module.exports.run = async (bot, message, args) => {
         var user = message.mentions.users.first() || bot.users.cache.get(args[0])
     }
 
+    const joinedAt = formatDate(user.member.joinedAt)
+    const createdAt = formatDate(user.createdAt)
+
     let uEmbed = new Discord.MessageEmbed()
         .setColor('f5f242')
         .setTitle("User info")
-        .setThumbnail(message.guild.iconURL())
+        .setThumbnail(user.avatarURL())
         .setAuthor(`${user.username} Info`, user.avatarURL())
-        .addField("**Name:**", `${user.username}`, true)
-        .addField("**Tag:**", `${user.discriminator}`, true)
+        .addField("**Name:**", `${user.username}`)
+        .addField("**Tag:**", `${user.discriminator}`)
         .addField("**ID:**", `${user.id}`, true)
-        .addField("**Status:**", `${user.presence.status}`, true)
-        .addField("**Created at:**", `${user.createdAt}`, true)
+        .addField("**Status:**", `${user.presence.status}`)
+        .addField("**Created at:**", `${createdAt}`)
+        .addField("**Joined at:**", joinedAt)
         .setFooter(bot.user.username, bot.user.avatarURL())
         .setTimestamp()
+
+    if (user.presence.game)
+        uEmbed.addField('Currently playing', user.presence.game.name);
     return message.channel.send(uEmbed);
 }
 

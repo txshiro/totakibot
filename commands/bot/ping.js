@@ -9,7 +9,7 @@ module.exports.run = async (bot, message, args) => {
         let embed = new Discord.MessageEmbed()
             .setTitle("🏓Pong!")
             .addField("🤖 System Latency", `${ping}ms`)
-            .addField("⚙️ API Latency", `${Math.round(bot.ping)}ms`)
+            .addField("⚙️ API Latency", `${Math.round(bot.ws.ping)}ms`)
             .setColor(color.lightyellow)
             .setTimestamp()
             .setFooter("tk!help for commands!", bot.user.avatarURL())
