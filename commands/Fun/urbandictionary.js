@@ -19,11 +19,14 @@ module.exports.run = async (bot, message, args) => {
         return message.channel.send(embed)
     })
 
+    let string1 = res.definition
+    string1.replace('[', ']')
+
     embed.setColor(colors.darkblue)
     embed.setTitle("Urban Dictionary")
     embed.setURL(res.urbanURL)
     embed.addField("📋 Word", res.word)
-    embed.addField("📖 Definition", res.definition)
+    embed.addField("📖 Definition", string1)
     embed.addField("📕 Example", res.example)
     embed.addField('🖊️ Author', res.author)
     embed.addField("👍 Upvotes", res.thumbsUp);
