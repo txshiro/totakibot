@@ -19,9 +19,6 @@ module.exports.run = async (bot, message, args) => {
         return message.channel.send(embed)
     })
 
-    let string1 = res.definition
-    string1 = string1.replace('[');
-
     embed.setColor(colors.darkblue)
     embed.setTitle("Urban Dictionary")
     embed.setURL(res.urbanURL)
