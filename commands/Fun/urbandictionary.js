@@ -23,7 +23,7 @@ module.exports.run = async (bot, message, args) => {
     embed.setTitle("Urban Dictionary")
     embed.setURL(res.urbanURL)
     embed.addField("📋 Word", res.word)
-    embed.addField("📖 Definition", string1)
+    embed.addField("📖 Definition", res.definition)
     embed.addField("📕 Example", res.example)
     embed.addField('🖊️ Author', res.author)
     embed.addField("👍 Upvotes", res.thumbsUp);
