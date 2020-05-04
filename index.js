@@ -18,7 +18,12 @@ bot.on('ready', () => {
 bot.on('guildMemberAdd', member => {
     const channel = member.guild.channels.cache.find(channel => channel.name === "welcome");
     if (!channel) return;
-    channel.send(`👋 Welcome ${member}, to Totaki Support Server! 👋`);
+    var server = bot.guilds.cache.get("703661705997189200");
+    if (server) {
+        channel.send(`👋 Welcome ${member}, to Totaki Support Server! 👋`);
+    } else {
+        channel.send(`👋 Welcome ${member}! Hope you enjoy your stay!`)
+    }
 
 })
 
