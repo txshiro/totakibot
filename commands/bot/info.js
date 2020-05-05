@@ -19,7 +19,7 @@ module.exports.run = async (bot, message, args) => {
 
         let embed = new Discord.MessageEmbed()
             .setAuthor(message.author.username, message.author.avatarURL())
-            .addField("👨 Created by", "txshiro#0612")
+            .addField("👨 Created by", "txshiro#04353")
             .addField("📁 Total Servers", bot.guilds.cache.size)
             .addField("📦 Node", `Version: ${process.version}`)
             .addField("📚 Library", `Discord.js: v${package.dependencies["discord.js"].substr(1)}`)
