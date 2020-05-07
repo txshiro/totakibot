@@ -25,6 +25,7 @@
     "fluent-ffmpeg": "^2.1.2",
     "fs-readdir": "0.0.3",
     "fs-readdir-recursive": "^1.1.0",
+    "googleapis": "^39.2.0",
     "heroku": "^7.39.5",
     "install": "^0.13.0",
     "jikan-node": "^1.2.0",
