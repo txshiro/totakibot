@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const botconfig = require("../../json/botconfig.json");
 
 // CONNECT TO DATABASE
 mongoose.connect(process.env.MONGODB_URI, {
@@ -19,32 +18,12 @@ module.exports.run = async (bot, message, args) => {
     if (parseInt(args[1]) < 100) return message.reply("You can't give less than 100 beris");
     if (args[0] != "remove" && args[0] != "add") return message.reply("You can use only add/remove")
 
-    if (args[0] == "remove") {
-        const embed = new Discord.MessageEmbed()
-            .setDescription(`**Admin just took ${args[1]} beris to everyone!**`)
-            .setColor("0xFF2D00")
-            .setAuthor(message.author.username, message.author.avatarURL())
-            .setFooter("User doesn't have any beris");
-        message.channel.send(embed)
-    }
-    if (args[0] == "add") {
-        const embed = new Discord.MessageEmbed()
-            .setDescription(`**Admin just gave ${args[1]} beris to everyone!**`)
-            .setColor("0xFF2D00")
-            .setAuthor(message.author.username, message.author.avatarURL())
-            .setFooter("User doesn't have any beris");
-        message.channel.send(embed)
-    }
-
     Data.find({
         lb: "all"
     }).sort([
         ['money', 'descending']
     ]).exec((err, res) => {
         if (err) console.log(err);
-
-
-
         if (!res) return message.reply("No users");
 
         for (i = 0; i < res.length; i++) {
@@ -57,10 +36,13 @@ module.exports.run = async (bot, message, args) => {
                     if (args[0] == "remove") {
                         data.money -= parseInt(args[1]);
                         data.save().catch(err => console.log(err));
+                        message.channel.send(`**Admin just took ${args[1]} beris to everyone!**`)
                     }
                     if (args[0] == "add") {
                         data.money += parseInt(args[1]);
                         data.save().catch(err => console.log(err));
+                        message.channel.send(`**Admin just gave ${args[1]} beris to everyone!**`)
+
                     }
                 }
 
